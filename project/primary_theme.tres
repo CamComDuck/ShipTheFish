@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c5sdt6mgsvoaf"]
+
+[ext_resource type="FontFile" uid="uid://duig4nl1eapif" path="res://LondrinaSolid-Black.ttf" id="1_r0gmt"]
+
+[resource]
+Button/fonts/font = ExtResource("1_r0gmt")
+Label/fonts/font = ExtResource("1_r0gmt")

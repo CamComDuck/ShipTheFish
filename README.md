@@ -32,8 +32,6 @@
 ## Third-Party Assets
 
  ### Fonts
- -
+ - Primary font is from [Google Fonts](https://fonts.google.com/specimen/Londrina+Solid?lang=en_Latn&categoryFilters=Sans+Serif:%2FSans%2F*&preview.text=Ship%20the%20Fish), licensed under [SIL Open Font License](https://openfontlicense.org/open-font-license-official-text/)
 
- ### Addons
-  - [Godot State Charts](https://github.com/derkork/godot-statecharts?tab=readme-ov-file), licensed under [MIT License](https://github.com/derkork/godot-statecharts?tab=MIT-1-ov-file)
- 
+ ### Sound Effects
