@@ -9,6 +9,11 @@ var current_bubble : Bubble = null
 
 @onready var bubble := preload("res://bubble/bubble.tscn") as PackedScene
 @onready var fish := preload("res://fish/fish.tscn") as PackedScene
+@onready var trash: StaticBody2D = $NavigationRegion/Trash
+
+
+@onready var navigation_region := %NavigationRegion as NavigationRegion2D
+
 
 @export var fish_type : FishType
 @export var market_type : LocationType
@@ -32,6 +37,11 @@ func _ready() -> void:
 			child.connect("location_clicked", on_location_clicked)
 		elif child is Fish:
 			child.connect("fish_clicked", on_fish_clicked)
+	
+	var new_trash : Trash = trash.duplicate()
+	navigation_region.add_child(new_trash)
+	new_trash.global_position = Vector2(323, 316)
+	navigation_region.bake_navigation_polygon()
 
 
 func on_location_clicked(location: LocationType) -> void:

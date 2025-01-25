@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=10 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
 [ext_resource type="Resource" uid="uid://b46q2tf72yxgi" path="res://fish/fishTypes/goldfish.tres" id="2_m2ka0"]
@@ -7,10 +7,11 @@
 [ext_resource type="Resource" uid="uid://7cunnihjskm1" path="res://location/location_types/shop.tres" id="4_vdnso"]
 [ext_resource type="Resource" uid="uid://bug43peowdd6q" path="res://location/route_types/market_shop.tres" id="5_jqkw8"]
 [ext_resource type="Resource" uid="uid://ex8oweqsr504" path="res://location/route_types/shop_market.tres" id="6_wrsut"]
+[ext_resource type="PackedScene" uid="uid://wrb1n0uf6ukg" path="res://trash/trash.tscn" id="8_27dsx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
-vertices = PackedVector2Array(1118.93, 31.9688, 1115.06, 605.969, 33.1094, 603.023, 39.8828, 29.0234)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(1118.93, 31.9688, 1115.06, 605.969, 555.609, 273, 550.313, 253.211, 550.313, 292.789, 550, 293.102, 550, 307, 535.789, 307.313, 33.1094, 603.023, 516, 312.609, 550, 252.891, 550, 239, 39.8828, 29.0234, 535.789, 238.688, 516, 233.391, 536.102, 239, 496.211, 238.688, 495.898, 239, 482, 239, 482, 252.891, 481.688, 253.211, 476.391, 273, 481.688, 292.789, 482, 293.102, 482, 307, 495.898, 307, 496.211, 307.313, 536.102, 307)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 4, 1, 6), PackedInt32Array(7, 6, 1, 8, 9), PackedInt32Array(0, 3, 10, 11), PackedInt32Array(12, 0, 11, 13, 14), PackedInt32Array(11, 15, 13), PackedInt32Array(12, 14, 16), PackedInt32Array(12, 16, 17, 18), PackedInt32Array(8, 12, 18, 19, 20), PackedInt32Array(8, 20, 21), PackedInt32Array(8, 21, 22), PackedInt32Array(8, 22, 23, 24), PackedInt32Array(24, 25, 26), PackedInt32Array(7, 27, 6), PackedInt32Array(9, 8, 24, 26)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1129, 22, 1125, 616, 23, 613)])
 
 [node name="Level" type="Node2D"]
@@ -27,6 +28,10 @@ position = Vector2(800, 192)
 [node name="Shop" parent="." instance=ExtResource("3_w2b0j")]
 position = Vector2(200, 388)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, 8)
 navigation_polygon = SubResource("NavigationPolygon_0slok")
+
+[node name="Trash" parent="NavigationRegion" instance=ExtResource("8_27dsx")]
+position = Vector2(516, 273)
