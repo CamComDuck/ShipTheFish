@@ -24,7 +24,8 @@ anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control"]
+[node name="MaxSizeLabel" type="Label" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -56.0
 offset_top = -110.0
@@ -58,3 +59,5 @@ size_flags_vertical = 3
 [node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Send"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

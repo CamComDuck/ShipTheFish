@@ -2,7 +2,7 @@
 class_name Location
 extends Area2D
 
-signal location_clicked (location_type : LocationType)
+signal location_clicked (location : LocationType)
 
 var location_type : LocationType
 var is_hovered := false
