@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxebkb7pdxrns"]
+
+[ext_resource type="Texture2D" uid="uid://c3f53b2at24y2" path="res://bubble/Bubble.png" id="1_382it"]
+[ext_resource type="Script" path="res://coral/bubble_floating.gd" id="1_inlja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rct3o"]
+radius = 51.0098
+
+[node name="BubbleFloating" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = -0.8
+script = ExtResource("1_inlja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_382it")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rct3o")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

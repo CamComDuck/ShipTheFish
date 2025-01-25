@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brf5qrjg1x41j"]
 
 [ext_resource type="Script" path="res://bubble/bubble.gd" id="1_6u0lw"]
-[ext_resource type="Texture2D" uid="uid://c3f53b2at24y2" path="res://bubble/bubble.png" id="1_pkgrn"]
+[ext_resource type="Texture2D" uid="uid://c3f53b2at24y2" path="res://bubble/Bubble.png" id="1_pkgrn"]
 [ext_resource type="Theme" uid="uid://c5sdt6mgsvoaf" path="res://primary_theme.tres" id="3_68tq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yca6q"]
@@ -14,7 +14,7 @@ motion_mode = 1
 script = ExtResource("1_6u0lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3.35417, 3.35417)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_pkgrn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,10 +22,9 @@ shape = SubResource("CircleShape2D_yca6q")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-target_desired_distance = 50.0
+target_desired_distance = 100.0
 avoidance_enabled = true
 radius = 45.0
-debug_enabled = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

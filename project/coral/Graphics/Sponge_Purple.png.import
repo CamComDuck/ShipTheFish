@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3f53b2at24y2"
-path="res://.godot/imported/Bubble.png-9e7bd5f1b5a5aebe2d17fec136c28e60.ctex"
+uid="uid://qx5qbx1uukcx"
+path="res://.godot/imported/Sponge_Purple.png-2f69a797e1d8ab30f2b873b77e5db323.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bubble/Bubble.png"
-dest_files=["res://.godot/imported/Bubble.png-9e7bd5f1b5a5aebe2d17fec136c28e60.ctex"]
+source_file="res://coral/Graphics/Sponge_Purple.png"
+dest_files=["res://.godot/imported/Sponge_Purple.png-2f69a797e1d8ab30f2b873b77e5db323.ctex"]
 
 [params]
 

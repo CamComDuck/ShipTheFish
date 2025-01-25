@@ -8,6 +8,7 @@ var current_bubble : Bubble = null
 @onready var shop := $Shop as Location
 
 @onready var bubble := preload("res://bubble/bubble.tscn") as PackedScene
+@onready var bubble_floating := preload("res://coral/bubble_floating.tscn") as PackedScene
 @onready var fish := preload("res://fish/fish.tscn") as PackedScene
 @onready var trash: StaticBody2D = $NavigationRegion/Trash
 
@@ -38,10 +39,15 @@ func _ready() -> void:
 		elif child is Fish:
 			child.connect("fish_clicked", on_fish_clicked)
 	
-	var new_trash : Trash = trash.duplicate()
-	navigation_region.add_child(new_trash)
-	new_trash.global_position = Vector2(323, 316)
+	for child in navigation_region.get_children():
+		if child is Coral:
+			child.connect("bubble_spawned", on_bubble_spawned)
+	#
+	#var new_trash : Trash = trash.duplicate()
+	#navigation_region.add_child(new_trash)
+	#new_trash.global_position = Vector2(323, 816)
 	navigation_region.bake_navigation_polygon()
+	
 
 
 func on_location_clicked(location: LocationType) -> void:
@@ -78,6 +84,14 @@ func on_fish_clicked(fish_clicked : Fish) -> void:
 			fish_clicked.queue_free()
 			fish_clicked.route.start.add_fish(fish_duplicate)
 
+
+func on_bubble_spawned(coral_spawned_from : Coral) -> void:
+	var new_bubble := bubble_floating.instantiate() as BubbleFloating
+	navigation_region.add_child(new_bubble)
+	var random_x := randf_range(-80.0, 80.0)
+	new_bubble.global_position.x = coral_spawned_from.global_position.x + random_x
+	new_bubble.global_position.y = coral_spawned_from.global_position.y - 100
+	
 
 func on_bubble_sent() -> void:
 	bubble_active_location = null

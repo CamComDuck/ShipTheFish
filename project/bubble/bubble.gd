@@ -1,4 +1,4 @@
-@icon("res://bubble/bubble.png")
+@icon("res://bubble/Bubble.png")
 class_name Bubble
 extends CharacterBody2D
 
@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, direction.y * speed, delta * speed)
 		move_and_slide()
 		
+		
 
 func add_fish(new_fish : Fish) -> void:
 	fish_inside.append(new_fish)
@@ -54,6 +55,8 @@ func _on_button_pressed() -> void:
 		bubble_sent.emit()
 		send_button.hide()
 		max_size_label.hide()
+		var tween_spin : Tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+		tween_spin.tween_property(self, "rotation", 30, 20).set_trans(Tween.TRANS_SINE)
 
 
 func _on_navigation_agent_target_reached() -> void:
