@@ -8,7 +8,7 @@ var location_type : LocationType
 var is_hovered := false
 
 @onready var sprite := %Sprite as Sprite2D
-@onready var grid_container := %GridContainer as GridContainer
+@onready var grid_container := %GridContainerLocation as GridContainer
 @onready var panel_container := %PanelContainer as PanelContainer
 
 func _ready() -> void:

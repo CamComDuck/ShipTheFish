@@ -1,13 +1,13 @@
 @icon("res://bubble/bubble.png")
 class_name Bubble
-extends Area2D
+extends RigidBody2D
 
 signal bubble_sent
 
 var fish_inside : Array[Fish] = []
 var max_size := 1
 
-@onready var grid_container := %GridContainer as GridContainer
+@onready var grid_container := %GridContainerBubble as GridContainer
 @onready var max_size_label := %MaxSizeLabel as Label
 
 func _ready() -> void:
