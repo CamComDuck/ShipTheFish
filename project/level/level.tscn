@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://csv6b4fc4tdnl"]
+
+[ext_resource type="PackedScene" uid="uid://btk03axb83wiy" path="res://fish/fish.tscn" id="1_wmajh"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
+[ext_resource type="Resource" uid="uid://b46q2tf72yxgi" path="res://fish/fishTypes/goldfish.tres" id="2_m2ka0"]
+[ext_resource type="Resource" uid="uid://dvfyjd41sp58q" path="res://location/location_types/market.tres" id="3_0xk20"]
+[ext_resource type="PackedScene" uid="uid://cjxn432ejjwi3" path="res://location/location.tscn" id="3_w2b0j"]
+[ext_resource type="Resource" uid="uid://7cunnihjskm1" path="res://location/location_types/shop.tres" id="4_vdnso"]
+[ext_resource type="Resource" uid="uid://bug43peowdd6q" path="res://location/route_types/market_shop.tres" id="5_jqkw8"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_xjk5w")
+fish_type = ExtResource("2_m2ka0")
+location_type = ExtResource("3_0xk20")
+location_type_2 = ExtResource("4_vdnso")
+route_1 = ExtResource("5_jqkw8")
+
+[node name="Fish" parent="." instance=ExtResource("1_wmajh")]
+position = Vector2(283, 217)
+
+[node name="Location" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(702, 192)
+
+[node name="Location2" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(481, 388)

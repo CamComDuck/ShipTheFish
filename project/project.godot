@@ -11,5 +11,21 @@ config_version=5
 [application]
 
 config/name="ShipTheFish"
+run/main_scene="res://level/level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://bubble/": "yellow",
+"res://coral/": "yellow",
+"res://fish/": "yellow",
+"res://level/": "orange",
+"res://location/": "yellow",
+"res://location/graphics/": "red",
+"res://location/location_types/": "red",
+"res://location/route_types/": "red",
+"res://title/": "orange",
+"res://trash/": "yellow"
+}

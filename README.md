@@ -1,12 +1,18 @@
 # Ship The Fish
 
+ - Global Game Jam 2025 Entry
+ - Team Members:
+  - Camden Hovell (Programmer)
+  - Joey Current (Artist)
+  - Marc Uddo (Musician)
+
 ## Third-Party Assets
 
  ### Graphics
- - All graphics are original
+ - All graphics are created by Joey
 
  ### Sounds
- - 
+ - Music is created by Marc
 
  ### Fonts
  -

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://b46q2tf72yxgi"]
+
+[ext_resource type="Texture2D" uid="uid://b5h0dpqwo514i" path="res://fish/fish.png" id="1_f42ba"]
+[ext_resource type="Script" path="res://fish/fishTypes/fish_types.gd" id="1_nmdhk"]
+
+[resource]
+script = ExtResource("1_nmdhk")
+name = "Goldfish"
+is_trash_eater = false
+icon = ExtResource("1_f42ba")
+speed = 10

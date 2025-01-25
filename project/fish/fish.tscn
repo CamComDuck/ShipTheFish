@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://btk03axb83wiy"]
+
+[ext_resource type="Script" path="res://fish/fish.gd" id="1_a1teu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pv7c4"]
+radius = 25.0
+
+[node name="Fish" type="CharacterBody2D"]
+script = ExtResource("1_a1teu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pv7c4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="received_type" from="." to="." method="_on_received_type"]
