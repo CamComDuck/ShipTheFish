@@ -11,15 +11,15 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xjk5w")
 fish_type = ExtResource("2_m2ka0")
-location_type = ExtResource("3_0xk20")
-location_type_2 = ExtResource("4_vdnso")
+market_type = ExtResource("3_0xk20")
+shop_type = ExtResource("4_vdnso")
 route_1 = ExtResource("5_jqkw8")
 
 [node name="Fish" parent="." instance=ExtResource("1_wmajh")]
 position = Vector2(283, 217)
 
-[node name="Location" parent="." instance=ExtResource("3_w2b0j")]
+[node name="Market" parent="." instance=ExtResource("3_w2b0j")]
 position = Vector2(702, 192)
 
-[node name="Location2" parent="." instance=ExtResource("3_w2b0j")]
+[node name="Shop" parent="." instance=ExtResource("3_w2b0j")]
 position = Vector2(481, 388)

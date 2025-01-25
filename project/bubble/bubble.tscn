@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://brf5qrjg1x41j"]
+
+[ext_resource type="Script" path="res://bubble/bubble.gd" id="1_6u0lw"]
+[ext_resource type="Texture2D" uid="uid://c3f53b2at24y2" path="res://bubble/bubble.png" id="1_pkgrn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yca6q"]
+radius = 81.0247
+
+[node name="Bubble" type="Area2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_6u0lw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.35417, 3.35417)
+texture = ExtResource("1_pkgrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yca6q")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -110.0
+offset_right = 51.0
+offset_bottom = -87.0
+text = "Bubble Size: 3"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = -80.0
+offset_top = -82.0
+offset_right = 81.0
+offset_bottom = 80.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="Spacer" type="Control" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Send"

@@ -1,13 +1,14 @@
 # Ship The Fish
 
  - Global Game Jam 2025 Entry
+ - Theme "Bubbles"
  
- ## Team Members:
+ ## Team Members
   - Camden Hovell (Programmer)
   - Joey Current (Artist)
   - Marc Uddo (Musician)
 
-  ## Diversifiers:
+  ## Diversifiers
    - Peaceformers (G4C University Student Challenge) 
      - Design a web-playable game where players take action about how resources are shared and divided. Keep the peace among all groups in a fair and equitable way.
    - Nurture yourself with Nature (G4C University Student Challenge)
