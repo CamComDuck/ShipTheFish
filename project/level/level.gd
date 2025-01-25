@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func on_location_clicked(location: LocationType) -> void:
 	if bubble_active_location == null:
-		print("Bubble spawned at " + location.name + " [Level]")
+		#print("Bubble spawned at " + location.name + " [Level]")
 		bubble_active_location = location
 		current_bubble = bubble.instantiate() as Bubble
 		add_child(current_bubble)
@@ -45,7 +45,7 @@ func on_location_clicked(location: LocationType) -> void:
 
 
 func on_fish_clicked(fish_clicked : Fish) -> void: 
-	print(fish_clicked.fish_type.name + " was clicked! [Level]")
+	#print(fish_clicked.fish_type.name + " was clicked! [Level]")
 	
 	if bubble_active_location == fish_clicked.route.start: 
 		var fish_duplicate := fish.instantiate() as Fish
@@ -54,9 +54,14 @@ func on_fish_clicked(fish_clicked : Fish) -> void:
 		fish_duplicate.connect("fish_clicked", on_fish_clicked)
 		
 		if fish_clicked.get_parent().name == "GridContainerLocation":
-			fish_clicked.route.start.remove_fish(fish_clicked)
-			fish_clicked.queue_free()
-			current_bubble.add_fish(fish_duplicate)
+			if current_bubble.fish_inside.size() < current_bubble.max_size:
+				if not current_bubble.fish_inside.is_empty():
+					if current_bubble.fish_inside[0].route != fish_clicked.route:
+						return
+						
+				fish_clicked.route.start.remove_fish(fish_clicked)
+				fish_clicked.queue_free()
+				current_bubble.add_fish(fish_duplicate)
 			
 		elif fish_clicked.get_parent().name == "GridContainerBubble":
 			current_bubble.remove_fish(fish_clicked)

@@ -12,7 +12,7 @@ var coordinates : Vector2
 var fish_at_location : Array[Fish]
 
 func add_fish(new_fish : Fish) -> void:
-	print("Fish added: " + new_fish.fish_type.name + " [LocationType]")
+	#print("Fish added: " + new_fish.fish_type.name + " [LocationType]")
 	fish_at_location.append(new_fish)
 	fish_added.emit(new_fish)
 	

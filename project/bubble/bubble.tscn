@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yca6q"]
 radius = 81.0247
 
-[node name="Bubble" type="RigidBody2D"]
+[node name="Bubble" type="CharacterBody2D"]
 z_index = 1
 z_as_relative = false
-gravity_scale = 0.0
+motion_mode = 1
 script = ExtResource("1_6u0lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,6 +18,10 @@ texture = ExtResource("1_pkgrn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yca6q")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+target_desired_distance = 50.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -57,8 +61,15 @@ columns = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="SendButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Send"
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="target_reached" from="NavigationAgent" to="." method="_on_navigation_agent_target_reached"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/SendButton" to="." method="_on_button_pressed"]
