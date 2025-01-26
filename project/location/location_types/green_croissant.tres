@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LocationType" load_steps=3 format=3 uid="uid://cxrsd2oyc3tq2"]
+
+[ext_resource type="Texture2D" uid="uid://c41wir8pe4ebo" path="res://location/graphics/ON_MAP/map_location_2.png" id="1_md561"]
+[ext_resource type="Script" path="res://location/location_types/location_type.gd" id="2_ko234"]
+
+[resource]
+script = ExtResource("2_ko234")
+name = "Green Croissant"
+speech_icon = ExtResource("1_md561")
+map_icon = ExtResource("1_md561")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Route" load_steps=4 format=3 uid="uid://5brylxmbsl6a"]
+
+[ext_resource type="Resource" uid="uid://hf3ursqx3fyi" path="res://location/location_types/purple_lilypad.tres" id="1_kpwxi"]
+[ext_resource type="Script" path="res://location/route_types/route.gd" id="1_tu4mu"]
+[ext_resource type="Resource" uid="uid://duxe3x7hxa44w" path="res://location/location_types/red_icecream.tres" id="3_r2kv1"]
+
+[resource]
+script = ExtResource("1_tu4mu")
+route_number = 0
+start = ExtResource("3_r2kv1")
+destination = ExtResource("1_kpwxi")

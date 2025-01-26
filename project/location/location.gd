@@ -1,10 +1,10 @@
-@icon("res://location/graphics/market.png")
+@icon("res://location/graphics/ON_MAP/map_location_1.png")
 class_name Location
 extends Area2D
 
 signal location_clicked (location : LocationType)
 
-var location_type : LocationType
+@export var location_type : LocationType
 var is_hovered := false
 
 @onready var sprite := %Sprite as Sprite2D
@@ -13,6 +13,11 @@ var is_hovered := false
 
 func _ready() -> void:
 	panel_container.hide()
+	sprite.texture = location_type.map_icon
+	#print("I am a " + location_type.name + " [Location]")
+	location_type.coordinates = global_position
+	location_type.connect("fish_added", on_fish_added)
+	location_type.connect("fish_removed", on_fish_removed)
 
 
 func _physics_process(_delta: float) -> void:
@@ -28,15 +33,6 @@ func _physics_process(_delta: float) -> void:
 		panel_container.hide()
 	else:
 		panel_container.show()
-
-
-func load_location_type(new_type : LocationType) -> void:
-	location_type = new_type
-	sprite.texture = location_type.map_icon
-	#print("I am a " + location_type.name + " [Location]")
-	location_type.coordinates = global_position
-	location_type.connect("fish_added", on_fish_added)
-	location_type.connect("fish_removed", on_fish_removed)
 
 
 func on_fish_added(new_fish : Fish) -> void:

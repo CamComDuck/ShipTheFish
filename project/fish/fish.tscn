@@ -1,52 +1,44 @@
 [gd_scene load_steps=3 format=3 uid="uid://btk03axb83wiy"]
 
 [ext_resource type="Script" path="res://fish/fish.gd" id="1_a1teu"]
-[ext_resource type="Texture2D" uid="uid://8fne0x4urtxd" path="res://fish/speech_bubble.png" id="2_rmwwk"]
+[ext_resource type="Texture2D" uid="uid://8fne0x4urtxd" path="res://fish/Speech_Bubble.png" id="2_rmwwk"]
 
 [node name="Fish" type="TextureRect"]
 z_index = 2
 z_as_relative = false
-custom_minimum_size = Vector2(48, 48)
-offset_right = 48.0
-offset_bottom = 48.0
+custom_minimum_size = Vector2(70, 45)
+offset_left = -35.0
+offset_top = -22.5
+offset_right = 35.0
+offset_bottom = 22.5
 script = ExtResource("1_a1teu")
 
 [node name="FishSprite" type="TextureRect" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 5
+custom_minimum_size = Vector2(70, 45)
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 45.0
 
 [node name="SpeechBubbleSprite" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 18.0
-offset_top = -91.0
-offset_right = 66.0
-offset_bottom = -43.0
+offset_left = -44.0
+offset_top = -76.5
+offset_right = 227.0
+offset_bottom = 287.5
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rmwwk")
 
 [node name="DestinationSprite" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 30.0
-offset_top = -82.0
-offset_right = 78.0
-offset_bottom = -34.0
-scale = Vector2(0.5, 0.5)
+offset_left = -31.0
+offset_top = -60.5
+offset_right = 9.0
+offset_bottom = -20.5
+expand_mode = 1
 stretch_mode = 5
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="FishSprite" to="." method="_on_fish_sprite_mouse_entered"]
+[connection signal="mouse_exited" from="FishSprite" to="." method="_on_fish_sprite_mouse_exited"]

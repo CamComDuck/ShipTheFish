@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://c5sdt6mgsvoaf" path="res://primary_theme.tres" id="3_68tq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yca6q"]
-radius = 81.0247
+radius = 90.0222
 
 [node name="Bubble" type="CharacterBody2D"]
 z_index = 1
@@ -14,7 +14,7 @@ motion_mode = 1
 script = ExtResource("1_6u0lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_pkgrn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,31 +35,41 @@ size_flags_vertical = 3
 [node name="MaxSizeLabel" type="Label" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -56.0
-offset_top = -110.0
-offset_right = 51.0
-offset_bottom = -87.0
+offset_left = -53.0
+offset_top = -122.0
+offset_right = 54.0
+offset_bottom = -99.0
 theme = ExtResource("3_68tq5")
 text = "Bubble Size: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 0
-offset_left = -80.0
-offset_top = -82.0
-offset_right = 81.0
-offset_bottom = 80.0
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -95.0
+offset_right = 97.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
 [node name="GridContainerBubble" type="GridContainer" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 45)
 layout_mode = 2
-columns = 3
+columns = 2
 
 [node name="Spacer" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -68,6 +78,8 @@ size_flags_vertical = 3
 [node name="SendButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Send"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]

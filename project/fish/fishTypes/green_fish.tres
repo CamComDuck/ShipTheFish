@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://bba7no5qqwqk7"]
+
+[ext_resource type="Texture2D" uid="uid://bqylltws505oy" path="res://fish/Graphics/70x45.png" id="1_55fnt"]
+[ext_resource type="Script" path="res://fish/fishTypes/fish_types.gd" id="1_m5wdf"]
+
+[resource]
+script = ExtResource("1_m5wdf")
+name = "Green Fish"
+is_trash_eater = false
+icon = ExtResource("1_55fnt")
+speed = 10

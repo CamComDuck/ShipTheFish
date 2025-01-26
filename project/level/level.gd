@@ -4,48 +4,65 @@ extends Node2D
 var bubble_active_location : LocationType = null
 var current_bubble : Bubble = null
 
-@onready var market := $Market as Location
-@onready var shop := $Shop as Location
+var all_fish_types : Array[FishType]
+var all_routes : Array[Route]
 
 @onready var bubble := preload("res://bubble/bubble.tscn") as PackedScene
 @onready var bubble_floating := preload("res://coral/bubble_floating.tscn") as PackedScene
 @onready var fish := preload("res://fish/fish.tscn") as PackedScene
 @onready var trash: StaticBody2D = $NavigationRegion/Trash
 
-
 @onready var navigation_region := %NavigationRegion as NavigationRegion2D
 
+@export_category("Fish Types")
+@export var blue_fish_type : FishType
+@export var brown_fish_type : FishType
+@export var green_fish_type : FishType
 
-@export var fish_type : FishType
-@export var market_type : LocationType
-@export var shop_type : LocationType
-
+@export_category("Routes")
 @export var route_1 : Route
 @export var route_2 : Route
+@export var route_3 : Route
+@export var route_4 : Route
+@export var route_5 : Route
+@export var route_6 : Route
+@export var route_7 : Route
+@export var route_8 : Route
+@export var route_9 : Route
+@export var route_10 : Route
+@export var route_11 : Route
+@export var route_12 : Route
+@export var route_13 : Route
+@export var route_14 : Route
+@export var route_15 : Route
+@export var route_16 : Route
+@export var route_17 : Route
+@export var route_18 : Route
+@export var route_19 : Route
+@export var route_20 : Route
+
+		
 
 func _ready() -> void:
-	market.load_location_type(market_type)
-	shop.load_location_type(shop_type)
 	
-	var new_fish = fish.instantiate() as Fish
-	new_fish.load_fish_type(fish_type)
-	new_fish.load_route(route_1)
-	new_fish.connect("fish_clicked", on_fish_clicked)
-	new_fish.route.start.add_fish(new_fish)
+	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type]
+	all_routes = [route_1, route_2, route_3, route_4, route_5, route_6, route_7, route_8, route_9, route_10, route_11, route_12, route_13, route_14, route_15, route_16, route_17, route_18, route_19, route_20]
+
+	for i in 20:
+		var new_fish = fish.instantiate() as Fish
+		new_fish.load_fish_type(all_fish_types.pick_random())
+		new_fish.load_route(all_routes.pick_random())
+		new_fish.connect("fish_clicked", on_fish_clicked)
+		new_fish.route.start.add_fish(new_fish)
 	
 	for child in get_children():
 		if child is Location:
 			child.connect("location_clicked", on_location_clicked)
-		elif child is Fish:
-			child.connect("fish_clicked", on_fish_clicked)
 	
 	for child in navigation_region.get_children():
 		if child is Coral:
 			child.connect("bubble_spawned", on_bubble_spawned)
-	#
-	#var new_trash : Trash = trash.duplicate()
-	#navigation_region.add_child(new_trash)
-	#new_trash.global_position = Vector2(323, 816)
+
 	navigation_region.bake_navigation_polygon()
 	
 

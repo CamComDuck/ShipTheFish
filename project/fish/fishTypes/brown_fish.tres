@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://l3vsq1qwf4va"]
+
+[ext_resource type="Texture2D" uid="uid://4ru3vblcje7g" path="res://fish/Graphics/Fish_SMALL3_70x45.png" id="1_j8073"]
+[ext_resource type="Script" path="res://fish/fishTypes/fish_types.gd" id="1_r4dca"]
+
+[resource]
+script = ExtResource("1_r4dca")
+name = "Brown Fish"
+is_trash_eater = false
+icon = ExtResource("1_j8073")
+speed = 10

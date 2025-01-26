@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LocationType" load_steps=3 format=3 uid="uid://hf3ursqx3fyi"]
+
+[ext_resource type="Texture2D" uid="uid://bnkf5pa4u2kna" path="res://location/graphics/ON_MAP/map_location_3.png" id="1_1to6h"]
+[ext_resource type="Script" path="res://location/location_types/location_type.gd" id="1_x66iu"]
+
+[resource]
+script = ExtResource("1_x66iu")
+name = "Purple Lilypad"
+speech_icon = ExtResource("1_1to6h")
+map_icon = ExtResource("1_1to6h")

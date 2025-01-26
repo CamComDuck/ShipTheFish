@@ -1,24 +1,47 @@
-[gd_scene load_steps=21 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=44 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
-[ext_resource type="Resource" uid="uid://b46q2tf72yxgi" path="res://fish/fishTypes/goldfish.tres" id="2_m2ka0"]
-[ext_resource type="Resource" uid="uid://dvfyjd41sp58q" path="res://location/location_types/market.tres" id="3_0xk20"]
+[ext_resource type="Resource" uid="uid://l3vsq1qwf4va" path="res://fish/fishTypes/brown_fish.tres" id="2_5jw6j"]
+[ext_resource type="Resource" uid="uid://brlytje7i1b43" path="res://fish/fishTypes/blue_fish.tres" id="2_h0p5v"]
+[ext_resource type="Resource" uid="uid://cxrsd2oyc3tq2" path="res://location/location_types/green_croissant.tres" id="3_us6x0"]
 [ext_resource type="PackedScene" uid="uid://cjxn432ejjwi3" path="res://location/location.tscn" id="3_w2b0j"]
-[ext_resource type="Resource" uid="uid://7cunnihjskm1" path="res://location/location_types/shop.tres" id="4_vdnso"]
-[ext_resource type="Resource" uid="uid://bug43peowdd6q" path="res://location/route_types/market_shop.tres" id="5_jqkw8"]
-[ext_resource type="Resource" uid="uid://ex8oweqsr504" path="res://location/route_types/shop_market.tres" id="6_wrsut"]
+[ext_resource type="Resource" uid="uid://bba7no5qqwqk7" path="res://fish/fishTypes/green_fish.tres" id="4_3hoqp"]
+[ext_resource type="Resource" uid="uid://7nhpy4tbdmaf" path="res://location/location_types/pink_line.tres" id="4_ba81c"]
+[ext_resource type="Resource" uid="uid://bjkhv3ei1y2xr" path="res://location/route_types/pinkLine_greenCroissant.tres" id="5_5g81n"]
+[ext_resource type="Resource" uid="uid://bvi2m2lkatvt0" path="res://location/route_types/greenCroissant_purpleLilypad.tres" id="6_6f04q"]
+[ext_resource type="Resource" uid="uid://bdwico3kkd2k2" path="res://location/route_types/greenCroissant_pinkLine.tres" id="6_cqabt"]
+[ext_resource type="Resource" uid="uid://drvga06s6g52f" path="res://location/route_types/greenCroissant_redIceCream.tres" id="7_tyr8x"]
 [ext_resource type="PackedScene" uid="uid://wrb1n0uf6ukg" path="res://trash/trash.tscn" id="8_27dsx"]
+[ext_resource type="Resource" uid="uid://bnoaodbs2mihp" path="res://location/route_types/greenCroissant_yellowIceCream.tres" id="8_nlmwe"]
+[ext_resource type="Resource" uid="uid://hf3ursqx3fyi" path="res://location/location_types/purple_lilypad.tres" id="8_yxvyb"]
 [ext_resource type="Texture2D" uid="uid://cv567saolfxqb" path="res://level/Game_Background.png" id="9_ekh1f"]
 [ext_resource type="PackedScene" uid="uid://cnhl0jjfuvhlw" path="res://coral/coral.tscn" id="9_flmfn"]
+[ext_resource type="Resource" uid="uid://duxe3x7hxa44w" path="res://location/location_types/red_icecream.tres" id="9_v272k"]
+[ext_resource type="Resource" uid="uid://blqfi66gf1fwi" path="res://location/route_types/pinkLine_purpleLilypad.tres" id="10_e1qqb"]
 [ext_resource type="Texture2D" uid="uid://dnt2pd2uh58uf" path="res://coral/Graphics/Bubble_Coral_Violet.png" id="10_kmlhs"]
+[ext_resource type="Resource" uid="uid://b0dws3c7k5ryj" path="res://location/location_types/yellow_icecream.tres" id="10_tgya4"]
 [ext_resource type="Texture2D" uid="uid://sd5pui6031m3" path="res://coral/Graphics/Bubble_Coral_Pink.png" id="11_ge1ih"]
+[ext_resource type="Resource" uid="uid://yddti563cmvy" path="res://location/route_types/pinkLine_redIceCream.tres" id="11_nrus2"]
 [ext_resource type="Texture2D" uid="uid://c58j20o3fsk42" path="res://coral/Graphics/Sponge_Blue.png" id="12_doa7x"]
+[ext_resource type="Resource" uid="uid://bb1ilb1dae3rm" path="res://location/route_types/pinkLine_yellowIceCream.tres" id="12_jstxj"]
 [ext_resource type="Texture2D" uid="uid://cpnc5ww87ayal" path="res://coral/Graphics/Bubble_Coral_Green.png" id="13_q8pwd"]
+[ext_resource type="Resource" uid="uid://dassqb40r2pbd" path="res://location/route_types/purpleLilypad_greenCroissant.tres" id="13_sui2q"]
 [ext_resource type="Texture2D" uid="uid://bx8mr81rukt8x" path="res://coral/Graphics/Bubble_Coral_Red.png" id="14_ea8o7"]
 [ext_resource type="Texture2D" uid="uid://1nyww3e1ecu" path="res://coral/Graphics/Coral_Tall.png" id="14_mxq2u"]
+[ext_resource type="Resource" uid="uid://brnlc0t0l3aeu" path="res://location/route_types/purpleLilypad_pinkLine.tres" id="14_pnpgc"]
 [ext_resource type="Texture2D" uid="uid://c1qqcnbd4ak0f" path="res://coral/Graphics/Coral_Medium.png" id="15_adyn2"]
+[ext_resource type="Resource" uid="uid://c0a7fspsfh810" path="res://location/route_types/purpleLilypad_redIceCream.tres" id="15_v5m1h"]
 [ext_resource type="Texture2D" uid="uid://qx5qbx1uukcx" path="res://coral/Graphics/Sponge_Purple.png" id="16_71d4m"]
+[ext_resource type="Resource" uid="uid://b2oa1147mgy5j" path="res://location/route_types/purpleLilypad_yellowIceCream.tres" id="16_exxl6"]
 [ext_resource type="Texture2D" uid="uid://cd2sp1jk1v8j" path="res://coral/Graphics/Sponge_Green.png" id="17_iot6i"]
+[ext_resource type="Resource" uid="uid://di1r7ok2h8jai" path="res://location/route_types/redIceCream_greenCroissant.tres" id="17_uhcbl"]
+[ext_resource type="Resource" uid="uid://38uranmbnr5f" path="res://location/route_types/redIceCream_pinkLine.tres" id="18_3bl1a"]
+[ext_resource type="Resource" uid="uid://5brylxmbsl6a" path="res://location/route_types/redIceCream_purpleLilypad.tres" id="19_2raec"]
+[ext_resource type="Resource" uid="uid://bbb3q7urdjrbg" path="res://location/route_types/redIceCream_yellowIceCream.tres" id="20_02tfx"]
+[ext_resource type="Resource" uid="uid://5m23ibfobhhp" path="res://location/route_types/yellowIceCream_greenCroissant.tres" id="21_jfs7g"]
+[ext_resource type="Resource" uid="uid://3gnbjo7py3q8" path="res://location/route_types/yellowIceCream_pinkLine.tres" id="22_dspcb"]
+[ext_resource type="Resource" uid="uid://bg0yovjtprtyd" path="res://location/route_types/yellowIceCream_purpleLilypad.tres" id="23_hdu4h"]
+[ext_resource type="Resource" uid="uid://b1o3peam04qt7" path="res://location/route_types/yellowIceCream_redIceCream.tres" id="24_yypj1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
 vertices = PackedVector2Array(1858.01, 16.0703, 1859.98, 1024.02, 1044.61, 502, 1039.31, 482.211, 1039.31, 521.789, 25.1406, 1028.97, 39.8516, 28.9297, 971, 536, 1039, 522.102, 1039, 536, 1039, 481.891, 1039, 468, 1024.79, 467.688, 1005, 462.391, 1025.1, 468, 985.211, 467.688, 984.898, 468, 971, 468, 971, 481.891, 970.688, 482.211, 965.391, 502, 970.688, 521.789, 971, 522.102, 984.898, 536, 985.211, 536.313, 1005, 541.609, 1024.79, 536.313, 1025.1, 536)
@@ -27,17 +50,49 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1868, 6, 1870, 
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xjk5w")
-fish_type = ExtResource("2_m2ka0")
-market_type = ExtResource("3_0xk20")
-shop_type = ExtResource("4_vdnso")
-route_1 = ExtResource("5_jqkw8")
-route_2 = ExtResource("6_wrsut")
+blue_fish_type = ExtResource("2_h0p5v")
+brown_fish_type = ExtResource("2_5jw6j")
+green_fish_type = ExtResource("4_3hoqp")
+route_1 = ExtResource("6_cqabt")
+route_2 = ExtResource("6_6f04q")
+route_3 = ExtResource("7_tyr8x")
+route_4 = ExtResource("8_nlmwe")
+route_5 = ExtResource("5_5g81n")
+route_6 = ExtResource("10_e1qqb")
+route_7 = ExtResource("11_nrus2")
+route_8 = ExtResource("12_jstxj")
+route_9 = ExtResource("13_sui2q")
+route_10 = ExtResource("14_pnpgc")
+route_11 = ExtResource("15_v5m1h")
+route_12 = ExtResource("16_exxl6")
+route_13 = ExtResource("17_uhcbl")
+route_14 = ExtResource("18_3bl1a")
+route_15 = ExtResource("19_2raec")
+route_16 = ExtResource("20_02tfx")
+route_17 = ExtResource("21_jfs7g")
+route_18 = ExtResource("22_dspcb")
+route_19 = ExtResource("23_hdu4h")
+route_20 = ExtResource("24_yypj1")
 
-[node name="Market" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(1611, 178)
+[node name="PinkLine" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(990, 313)
+location_type = ExtResource("4_ba81c")
 
-[node name="Shop" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(321, 756)
+[node name="GreenCroissant" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(537, 634)
+location_type = ExtResource("3_us6x0")
+
+[node name="PurpleLilypad" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(1683, 267)
+location_type = ExtResource("8_yxvyb")
+
+[node name="RedIceCream" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(220, 156)
+location_type = ExtResource("9_v272k")
+
+[node name="YellowIceCream" parent="." instance=ExtResource("3_w2b0j")]
+position = Vector2(1351, 609)
+location_type = ExtResource("10_tgya4")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
 unique_name_in_owner = true

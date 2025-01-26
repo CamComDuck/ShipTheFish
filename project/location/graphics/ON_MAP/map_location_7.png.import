@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8fne0x4urtxd"
-path="res://.godot/imported/Speech_Bubble.png-3c37cd255ed79e8e62316b866caf75db.ctex"
+uid="uid://con7asjl2nx5r"
+path="res://.godot/imported/map_location_7.png-5385a315aedd12f24261102ff813efbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fish/Speech_Bubble.png"
-dest_files=["res://.godot/imported/Speech_Bubble.png-3c37cd255ed79e8e62316b866caf75db.ctex"]
+source_file="res://location/graphics/ON_MAP/map_location_7.png"
+dest_files=["res://.godot/imported/map_location_7.png-5385a315aedd12f24261102ff813efbe.ctex"]
 
 [params]
 

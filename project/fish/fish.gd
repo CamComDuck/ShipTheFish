@@ -1,4 +1,4 @@
-@icon("res://fish/fish.png")
+@icon("res://fish/Graphics/70x45.png")
 class_name Fish
 extends TextureRect
 
@@ -17,9 +17,9 @@ func _ready() -> void:
 	#print(fish_type.name + " is going from " + route.start.name + " to " + route.destination.name + " [Route]")
 	fish_sprite.texture = fish_type.icon
 	destination_sprite.texture = route.destination.speech_icon
-	fish_sprite.pivot_offset.x = fish_sprite.size.x/2.0
-	fish_sprite.pivot_offset.y = fish_sprite.size.y/2.0
-	custom_minimum_size = fish_sprite.size
+	fish_sprite.pivot_offset.x = (fish_sprite.size.x/2.0) * (fish_sprite.scale.x)
+	fish_sprite.pivot_offset.y = (fish_sprite.size.y/2.0) * (fish_sprite.scale.y)
+	#custom_minimum_size = fish_sprite.size
 
 
 func _physics_process(_delta: float) -> void:
@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 			fish_clicked.emit(self)
 			
 		if Input.is_action_just_released("click"):
-			fish_sprite.scale = Vector2(1.5, 1.5)
+			fish_sprite.scale = Vector2(1.25, 1.25)
 
 
 func load_fish_type(new_type : FishType) -> void:
@@ -43,13 +43,13 @@ func load_route(new_route : Route) -> void:
 	route = new_route
 
 
-func _on_mouse_entered() -> void:
+func _on_fish_sprite_mouse_entered() -> void:
 	if not is_in_moving_bubble:
 		is_hovered = true
-		fish_sprite.scale = Vector2(1.5, 1.5)
+		fish_sprite.scale = Vector2(1.25, 1.25)
 
 
-func _on_mouse_exited() -> void:
+func _on_fish_sprite_mouse_exited() -> void:
 	if not is_in_moving_bubble:
 		is_hovered = false
 		fish_sprite.scale = Vector2(1.0, 1.0)

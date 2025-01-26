@@ -5,7 +5,7 @@ extends CharacterBody2D
 signal bubble_sent
 
 var fish_inside : Array[Fish] = []
-var max_size := 1
+var max_size := 4
 var is_moving := false
 var location_target : LocationType = null
 
@@ -46,17 +46,19 @@ func remove_fish(fish_removed : Fish) -> void:
 
 
 func _on_button_pressed() -> void:
-	if not is_moving:
-		if not fish_inside.is_empty():
+	if not is_moving and not fish_inside.is_empty():
 			location_target = fish_inside[0].route.destination
 			is_moving = true
 			for fish in fish_inside:
 				fish.is_in_moving_bubble = true
+			bubble_sent.emit()
+			send_button.hide()
+			max_size_label.hide()
+			var tween_spin : Tween = create_tween().set_ease(Tween.EASE_OUT_IN)
+			tween_spin.tween_property(self, "rotation", 20, 20).set_trans(Tween.TRANS_SINE)
+	elif not is_moving and fish_inside.is_empty():
 		bubble_sent.emit()
-		send_button.hide()
-		max_size_label.hide()
-		var tween_spin : Tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-		tween_spin.tween_property(self, "rotation", 30, 20).set_trans(Tween.TRANS_SINE)
+		queue_free()
 
 
 func _on_navigation_agent_target_reached() -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LocationType" load_steps=3 format=3 uid="uid://b0dws3c7k5ryj"]
+
+[ext_resource type="Script" path="res://location/location_types/location_type.gd" id="1_nmop7"]
+[ext_resource type="Texture2D" uid="uid://b0codrgejp4t3" path="res://location/graphics/ON_MAP/map_location_14.png" id="2_2e5t6"]
+
+[resource]
+script = ExtResource("1_nmop7")
+name = "Yellow Ice Cream"
+speech_icon = ExtResource("2_2e5t6")
+map_icon = ExtResource("2_2e5t6")

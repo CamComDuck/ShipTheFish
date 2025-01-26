@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LocationType" load_steps=3 format=3 uid="uid://7nhpy4tbdmaf"]
+
+[ext_resource type="Script" path="res://location/location_types/location_type.gd" id="1_8wf7n"]
+[ext_resource type="Texture2D" uid="uid://fq68vggqtibw" path="res://location/graphics/ON_MAP/map_location_1.png" id="1_56fh4"]
+
+[resource]
+script = ExtResource("1_8wf7n")
+name = "Pink Line"
+speech_icon = ExtResource("1_56fh4")
+map_icon = ExtResource("1_56fh4")
