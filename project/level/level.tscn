@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=45 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
 [ext_resource type="Resource" uid="uid://l3vsq1qwf4va" path="res://fish/fishTypes/brown_fish.tres" id="2_5jw6j"]
@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://bvi2m2lkatvt0" path="res://location/route_types/greenCroissant_purpleLilypad.tres" id="6_6f04q"]
 [ext_resource type="Resource" uid="uid://bdwico3kkd2k2" path="res://location/route_types/greenCroissant_pinkLine.tres" id="6_cqabt"]
 [ext_resource type="Resource" uid="uid://drvga06s6g52f" path="res://location/route_types/greenCroissant_redIceCream.tres" id="7_tyr8x"]
-[ext_resource type="PackedScene" uid="uid://wrb1n0uf6ukg" path="res://trash/trash.tscn" id="8_27dsx"]
 [ext_resource type="Resource" uid="uid://bnoaodbs2mihp" path="res://location/route_types/greenCroissant_yellowIceCream.tres" id="8_nlmwe"]
 [ext_resource type="Resource" uid="uid://hf3ursqx3fyi" path="res://location/location_types/purple_lilypad.tres" id="8_yxvyb"]
 [ext_resource type="Texture2D" uid="uid://cv567saolfxqb" path="res://level/Game_Background.png" id="9_ekh1f"]
@@ -45,8 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://bb84heufhqhct" path="res://level/UI_Bubble_Counter.png" id="43_xk0jt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
-vertices = PackedVector2Array(1858.01, 16.0703, 1859.98, 1024.02, 1044.61, 502, 1039.31, 482.211, 1039.31, 521.789, 25.1406, 1028.97, 39.8516, 28.9297, 971, 536, 1039, 522.102, 1039, 536, 1039, 481.891, 1039, 468, 1024.79, 467.688, 1005, 462.391, 1025.1, 468, 985.211, 467.688, 984.898, 468, 971, 468, 971, 481.891, 970.688, 482.211, 965.391, 502, 970.688, 521.789, 971, 522.102, 984.898, 536, 985.211, 536.313, 1005, 541.609, 1024.79, 536.313, 1025.1, 536)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(1, 5, 6, 7), PackedInt32Array(8, 4, 1, 9), PackedInt32Array(0, 3, 10, 11), PackedInt32Array(6, 0, 11, 12, 13), PackedInt32Array(11, 14, 12), PackedInt32Array(6, 13, 15), PackedInt32Array(6, 15, 16, 17), PackedInt32Array(6, 17, 18, 19), PackedInt32Array(6, 19, 20), PackedInt32Array(6, 20, 21, 7), PackedInt32Array(21, 22, 7), PackedInt32Array(7, 23, 24), PackedInt32Array(1, 7, 24, 25), PackedInt32Array(9, 1, 25, 26), PackedInt32Array(9, 26, 27)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1868, 6, 1870, 1034, 15, 1039)])
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcdkt"]
@@ -79,33 +76,30 @@ route_18 = ExtResource("22_dspcb")
 route_19 = ExtResource("23_hdu4h")
 route_20 = ExtResource("24_yypj1")
 
-[node name="PinkLine" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(990, 262)
-location_type = ExtResource("4_ba81c")
-
-[node name="GreenCroissant" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(537, 634)
-location_type = ExtResource("3_us6x0")
-
-[node name="PurpleLilypad" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(1552, 267)
-location_type = ExtResource("8_yxvyb")
-
-[node name="RedIceCream" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(293, 189)
-location_type = ExtResource("9_v272k")
-
-[node name="YellowIceCream" parent="." instance=ExtResource("3_w2b0j")]
-position = Vector2(1351, 609)
-location_type = ExtResource("10_tgya4")
-
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(15, 16)
 navigation_polygon = SubResource("NavigationPolygon_0slok")
 
-[node name="Trash" parent="NavigationRegion" instance=ExtResource("8_27dsx")]
-position = Vector2(1005, 502)
+[node name="PinkLine" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
+position = Vector2(975, 246)
+location_type = ExtResource("4_ba81c")
+
+[node name="GreenCroissant" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
+position = Vector2(522, 618)
+location_type = ExtResource("3_us6x0")
+
+[node name="PurpleLilypad" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
+position = Vector2(1537, 251)
+location_type = ExtResource("8_yxvyb")
+
+[node name="RedIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
+position = Vector2(278, 173)
+location_type = ExtResource("9_v272k")
+
+[node name="YellowIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
+position = Vector2(1336, 593)
+location_type = ExtResource("10_tgya4")
 
 [node name="Coral1" parent="NavigationRegion" instance=ExtResource("9_flmfn")]
 position = Vector2(945, 974)
@@ -259,7 +253,13 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 wait_time = 10.0
 
+[node name="TrashSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
+[connection signal="timeout" from="TrashSpawnTimer" to="." method="_on_trash_spawn_timer_timeout"]
 
 [editable path="NavigationRegion/Coral1"]
 [editable path="NavigationRegion/Coral2"]

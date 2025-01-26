@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://wrb1n0uf6ukg"]
 
 [ext_resource type="Script" path="res://trash/trash.gd" id="1_b8co7"]
-[ext_resource type="Texture2D" uid="uid://dmku7ivmb4nbp" path="res://trash/trash.png" id="1_ovivy"]
+[ext_resource type="Texture2D" uid="uid://cyne0813ipquh" path="res://trash/Graphics/Trash2.png" id="2_gr6pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eup1t"]
-size = Vector2(48, 48)
+size = Vector2(83, 94)
 
 [node name="Trash" type="StaticBody2D"]
 script = ExtResource("1_b8co7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ovivy")
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_gr6pk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_eup1t")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 29.26
+radius = 81.89
 affect_navigation_mesh = true
+carve_navigation_mesh = true

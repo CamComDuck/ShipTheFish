@@ -27,4 +27,9 @@ texture = ExtResource("1_xmolb")
 unique_name_in_owner = true
 wait_time = 10.0
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 214.29
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
 [connection signal="timeout" from="BubbleSpawnTimer" to="." method="_on_timer_timeout"]

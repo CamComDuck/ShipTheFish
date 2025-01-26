@@ -29,6 +29,7 @@ folder_colors={
 "res://bubble/": "yellow",
 "res://coral/": "yellow",
 "res://fish/": "yellow",
+"res://fish/Graphics/": "red",
 "res://fish/fishTypes/": "red",
 "res://level/": "orange",
 "res://location/": "yellow",
@@ -36,7 +37,8 @@ folder_colors={
 "res://location/location_types/": "red",
 "res://location/route_types/": "red",
 "res://title/": "orange",
-"res://trash/": "yellow"
+"res://trash/": "yellow",
+"res://trash/Graphics/": "red"
 }
 
 [gui]

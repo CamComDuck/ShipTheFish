@@ -14,12 +14,12 @@ var all_routes : Array[Route]
 @onready var bubble_floating := preload("res://coral/bubble_floating.tscn") as PackedScene
 @onready var bubble_icon := preload("res://level/bubble_icon.tscn") as PackedScene
 @onready var fish := preload("res://fish/fish.tscn") as PackedScene
-
-@onready var trash := $NavigationRegion/Trash as StaticBody2D
+@onready var trash := preload("res://trash/trash.tscn") as PackedScene
 
 @onready var navigation_region := %NavigationRegion as NavigationRegion2D
 @onready var grid_container := %GridContainer as GridContainer
 @onready var fish_spawn_timer := %FishSpawnTimer as Timer
+@onready var trash_spawn_timer := %TrashSpawnTimer as Timer
 @onready var win_screen := %WinScreen as PanelContainer
 @onready var lose_screen := %LoseScreen as PanelContainer
 
@@ -59,14 +59,11 @@ func _ready() -> void:
 		var new_bubble_icon := bubble_icon.instantiate()
 		grid_container.add_child(new_bubble_icon)
 	
-	
-	for child in get_children():
-		if child is Location:
-			child.connect("location_clicked", on_location_clicked)
-	
 	for child in navigation_region.get_children():
 		if child is Coral:
 			child.connect("bubble_spawned", on_bubble_spawned)
+		elif child is Location:
+			child.connect("location_clicked", on_location_clicked)
 
 	navigation_region.bake_navigation_polygon()
 	_on_fish_spawn_timer_timeout()
@@ -74,7 +71,6 @@ func _ready() -> void:
 
 func on_location_clicked(location: LocationType) -> void:
 	if bubble_active_location == null and bubbles_available > 0 and not game_over:
-		#print("Bubble spawned at " + location.name + " [Level]")
 		bubbles_available -= 1
 		grid_container.get_child(0).queue_free()
 		bubble_active_location = location
@@ -149,8 +145,19 @@ func _on_fish_spawn_timer_timeout() -> void:
 	new_fish.connect("fish_clicked", on_fish_clicked)
 	new_fish.route.start.add_fish(new_fish)
 	
-	var min_sec := 1.5
-	var max_sec := 2.5
+	var min_sec := 3.5
+	var max_sec := 5.5
 	var rand_respawn := randf_range(min_sec, max_sec)
 	fish_spawn_timer.start(rand_respawn)
 	
+
+func _on_trash_spawn_timer_timeout() -> void:
+	var new_trash = trash.instantiate() as Trash
+	navigation_region.add_child(new_trash)
+	new_trash.global_position = Vector2(randf_range(300, 1800), randf_range(90,715))
+	navigation_region.bake_navigation_polygon()
+	
+	var min_sec := 3.5
+	var max_sec := 5.5
+	var rand_respawn := randf_range(min_sec, max_sec)
+	trash_spawn_timer.start(rand_respawn)

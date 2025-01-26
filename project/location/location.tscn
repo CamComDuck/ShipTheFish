@@ -46,6 +46,9 @@ size_flags_vertical = 4
 columns = 3
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 88.35
+affect_navigation_mesh = true
+carve_navigation_mesh = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

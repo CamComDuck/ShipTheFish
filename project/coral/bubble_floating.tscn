@@ -25,7 +25,5 @@ texture = ExtResource("1_382it")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rct3o")
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
