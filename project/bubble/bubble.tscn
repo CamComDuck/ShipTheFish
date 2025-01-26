@@ -8,12 +8,13 @@
 radius = 90.0222
 
 [node name="Bubble" type="CharacterBody2D"]
-z_index = 1
+z_index = 9
 z_as_relative = false
 motion_mode = 1
 script = ExtResource("1_6u0lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.733333)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_pkgrn")
 

@@ -2,6 +2,8 @@
 class_name BubbleFloating
 extends RigidBody2D
 
+signal bubble_collected
+
 var is_hovered := false
 
 func _ready() -> void:
@@ -14,6 +16,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if is_hovered:
 		if Input.is_action_just_pressed("click"):
+			bubble_collected.emit()
 			queue_free()
 			
 	if global_position.y < -10:

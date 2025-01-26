@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://j10fafwkk0ly"]
+
+[ext_resource type="Texture2D" uid="uid://c3f53b2at24y2" path="res://bubble/Bubble.png" id="1_tbbd6"]
+
+[node name="BubbleIcon" type="TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+texture = ExtResource("1_tbbd6")
+expand_mode = 1
+stretch_mode = 5
