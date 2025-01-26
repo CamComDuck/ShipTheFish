@@ -26,6 +26,7 @@ func _physics_process(_delta: float) -> void:
 	if is_hovered:
 		if Input.is_action_just_pressed("click"):
 			trash_cleared.emit()
+			GlobalAudio.play_trash_pickup_sound()
 			queue_free()
 
 

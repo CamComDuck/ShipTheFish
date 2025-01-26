@@ -17,6 +17,7 @@ func _physics_process(_delta: float) -> void:
 	if is_hovered:
 		if Input.is_action_just_pressed("click"):
 			bubble_collected.emit()
+			GlobalAudio.play_bubble_pop_sound()
 			queue_free()
 			
 	if global_position.y < -10:

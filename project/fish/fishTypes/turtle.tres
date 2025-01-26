@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://bjy8c2jblrto0"]
+
+[ext_resource type="Texture2D" uid="uid://6pivikgeyprr" path="res://fish/Graphics/Turtle.png" id="1_8nlg3"]
+[ext_resource type="Script" path="res://fish/fishTypes/fish_types.gd" id="1_kfwyp"]
+
+[resource]
+script = ExtResource("1_kfwyp")
+name = "Turtle"
+is_trash_eater = false
+icon = ExtResource("1_8nlg3")
+speed = 10

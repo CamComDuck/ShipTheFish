@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjxn432ejjwi3"]
+[gd_scene load_steps=6 format=3 uid="uid://cjxn432ejjwi3"]
 
 [ext_resource type="Script" path="res://location/location.gd" id="1_mp7yl"]
 [ext_resource type="Texture2D" uid="uid://fq68vggqtibw" path="res://location/graphics/ON_MAP/map_location_1.png" id="2_dmch1"]
+[ext_resource type="Texture2D" uid="uid://dpetvh52bwfp6" path="res://level/Texture_Square.png" id="3_4h2vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjyf"]
 size = Vector2(105, 176)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dyce2"]
+texture = ExtResource("3_4h2vp")
 
 [node name="Location" type="Area2D"]
 z_index = 6
@@ -32,6 +36,7 @@ offset_left = 75.0
 offset_top = -25.0
 offset_right = 125.0
 offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dyce2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
 layout_mode = 2
@@ -50,7 +55,6 @@ columns = 3
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 88.35
 affect_navigation_mesh = true
-carve_navigation_mesh = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

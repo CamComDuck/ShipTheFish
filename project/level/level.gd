@@ -6,7 +6,7 @@ var current_bubble : Bubble = null
 var bubbles_available := 3
 var game_over := false
 
-var fish_needed_to_win := 1.0
+var fish_needed_to_win := 25.0
 var fish_delivered := 0.0
 
 var all_coral_alive : Array[Coral]
@@ -46,6 +46,7 @@ var normal := Vector2(1.0, 1.0)
 @export var orange_fish_type : FishType
 @export var ray_fish_type : FishType
 @export var teal_fish_type : FishType
+@export var turtle_fish_type : FishType
 
 @export_category("Routes")
 @export var route_1 : Route
@@ -75,7 +76,7 @@ func _ready() -> void:
 	win_texture.hide()
 	lose_texture.hide()
 	
-	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type, orange_fish_type, ray_fish_type, teal_fish_type]
+	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type, orange_fish_type, ray_fish_type, teal_fish_type, turtle_fish_type]
 	all_routes = [route_1, route_2, route_3, route_4, route_5, route_6, route_7, route_8, route_9, route_10, route_11, route_12, route_13, route_14, route_15, route_16, route_17, route_18, route_19, route_20]
 		
 	for i in bubbles_available:
@@ -97,6 +98,7 @@ func _ready() -> void:
 
 func on_location_clicked(location: LocationType) -> void:
 	if bubble_active_location == null and bubbles_available > 0 and not game_over:
+		GlobalAudio.play_click_sound()
 		bubbles_available -= 1
 		grid_container.get_child(0).queue_free()
 		bubble_active_location = location
@@ -107,6 +109,7 @@ func on_location_clicked(location: LocationType) -> void:
 		current_bubble.connect("bubble_reached_destination", on_bubble_reached_destination)
 	elif bubble_active_location == null and bubbles_available <= 0:
 		# GAME OVER
+		GlobalAudio.play_click_sound()
 		end_screen.show()
 		lose_texture.show()
 		fish_spawn_timer.stop()
@@ -125,6 +128,7 @@ func on_fish_clicked(fish_clicked : Fish) -> void:
 	#print(fish_clicked.fish_type.name + " was clicked! [Level]")
 	
 	if bubble_active_location == fish_clicked.route.start and not game_over: 
+		GlobalAudio.play_click_sound()
 		var fish_duplicate := fish.instantiate() as Fish
 		fish_duplicate.load_fish_type(fish_clicked.fish_type)
 		fish_duplicate.load_route(fish_clicked.route)
@@ -156,6 +160,7 @@ func on_bubble_spawned(coral_spawned_from : Coral) -> void:
 	
 
 func on_bubble_sent() -> void:
+	GlobalAudio.play_click_sound()
 	bubble_active_location = null
 	current_bubble = null
 	
@@ -225,7 +230,7 @@ func _on_trash_spawn_timer_timeout() -> void:
 	var new_trash := trash.instantiate() as Trash
 	new_trash.connect("trash_cleared", on_trash_cleared)
 	navigation_region.add_child(new_trash)
-	new_trash.global_position = Vector2(randf_range(300, 1800), randf_range(90,715))
+	new_trash.global_position = Vector2(randf_range(300, 1690), randf_range(90,715))
 	
 	trash_on_screen += 1
 	if trash_on_screen % 2 == 0 and not all_coral_alive.is_empty():
@@ -247,10 +252,12 @@ func _on_trash_spawn_timer_timeout() -> void:
 
 
 func _on_play_again_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	get_tree().reload_current_scene()
 
 
 func _on_main_menu_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	get_tree().change_scene_to_file("res://title/title.tscn")
 
 

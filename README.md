@@ -35,3 +35,7 @@
  - Primary font is from [Google Fonts](https://fonts.google.com/specimen/Londrina+Solid?lang=en_Latn&categoryFilters=Sans+Serif:%2FSans%2F*&preview.text=Ship%20the%20Fish), licensed under [SIL Open Font License](https://openfontlicense.org/open-font-license-official-text/)
 
  ### Sound Effects
+ - BubblePop is from [FreeSound.org](https://freesound.org/people/CGEffex/sounds/89532/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+ - Button is from [FreeSound.org](https://freesound.org/people/IndyTheCringeMaster/sounds/777571/), licensed under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
+ - TrashPickup is from [FreeSound.org](https://freesound.org/people/volivieri/sounds/37170/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+ - Click is from [FreeSound.org](https://freesound.org/people/Funky_Audio/sounds/698818/), licensed under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)

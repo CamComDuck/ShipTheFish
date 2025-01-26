@@ -15,6 +15,10 @@ run/main_scene="res://title/title.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://fish/Graphics/70x45.png"
 
+[autoload]
+
+GlobalAudio="*res://audio/global_audio.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -26,6 +30,7 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
+"res://audio/": "purple",
 "res://bubble/": "yellow",
 "res://coral/": "yellow",
 "res://coral/Graphics/": "red",

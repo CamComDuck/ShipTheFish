@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://sq47be7v6hb6"
+path="res://.godot/imported/Ship The Fish_04.ogg-c502906f7d4f3527ee28b77a9e2e430d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/Ship The Fish_04.ogg"
+dest_files=["res://.godot/imported/Ship The Fish_04.ogg-c502906f7d4f3527ee28b77a9e2e430d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

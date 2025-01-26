@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4kr6csw8iy3j"]
+
+[ext_resource type="Script" path="res://audio/global_audio.gd" id="1_depcy"]
+[ext_resource type="AudioStream" uid="uid://sq47be7v6hb6" path="res://audio/Ship The Fish_04.ogg" id="1_ijaas"]
+[ext_resource type="AudioStream" uid="uid://30jxgv83w8xq" path="res://audio/bubble pop.mp3" id="3_1j8y7"]
+[ext_resource type="AudioStream" uid="uid://cvak7qxupc0nf" path="res://audio/button.wav" id="4_lvhgk"]
+[ext_resource type="AudioStream" uid="uid://dugypee5nq63l" path="res://audio/trash pickup.wav" id="5_epn65"]
+[ext_resource type="AudioStream" uid="uid://boa46t0fhkg1b" path="res://audio/click.wav" id="6_0bb7a"]
+
+[node name="GlobalAudio" type="Node2D"]
+script = ExtResource("1_depcy")
+
+[node name="ShipTheFish04" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ijaas")
+autoplay = true
+parameters/looping = true
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1j8y7")
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lvhgk")
+
+[node name="TrashPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_epn65")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0bb7a")

@@ -20,20 +20,24 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	get_tree().change_scene_to_packed(preload("res://level/level.tscn"))
 
 
 func _on_tutorial_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	tutorial.show()
 	back_button.show()
 
 
 func _on_credits_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	credits.show()
 	back_button.show()
 
 
 func _on_back_button_pressed() -> void:
+	GlobalAudio.play_button_sound()
 	tutorial.hide()
 	credits.hide()
 	back_button.hide()

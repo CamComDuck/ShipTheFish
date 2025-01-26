@@ -10,6 +10,9 @@ var max_size := 4
 var is_moving := false
 var location_target : LocationType = null
 
+var big := Vector2(1.2, 1.2)
+var normal := Vector2(1.0, 1.0)
+
 var speed := 100
 var accel := 7
 
@@ -59,10 +62,20 @@ func _on_button_pressed() -> void:
 			tween_spin.tween_property(self, "rotation", 20, 20).set_trans(Tween.TRANS_SINE)
 	elif not is_moving and fish_inside.is_empty():
 		bubble_sent.emit()
+		GlobalAudio.play_bubble_pop_sound()
 		queue_free()
 
 
 func _on_navigation_agent_target_reached() -> void:
 	is_moving = false
 	bubble_reached_destination.emit(fish_inside.size())
+	GlobalAudio.play_bubble_pop_sound()
 	queue_free()
+
+
+func _on_send_button_mouse_entered() -> void:
+	send_button.scale = big
+
+
+func _on_send_button_mouse_exited() -> void:
+	send_button.scale = normal

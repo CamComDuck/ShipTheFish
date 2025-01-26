@@ -30,7 +30,6 @@ wait_time = 10.0
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 147.28
 affect_navigation_mesh = true
-carve_navigation_mesh = true
 
 [node name="ReviveTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=55 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
 [ext_resource type="Resource" uid="uid://l3vsq1qwf4va" path="res://fish/fishTypes/brown_fish.tres" id="2_5jw6j"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bm7bdoyoyadgw" path="res://fish/fishTypes/ray.tres" id="6_s07ac"]
 [ext_resource type="Resource" uid="uid://cr4eowpob047q" path="res://fish/fishTypes/teal_fish.tres" id="7_muybu"]
 [ext_resource type="Resource" uid="uid://drvga06s6g52f" path="res://location/route_types/greenCroissant_redIceCream.tres" id="7_tyr8x"]
+[ext_resource type="Resource" uid="uid://bjy8c2jblrto0" path="res://fish/fishTypes/turtle.tres" id="8_5tgn6"]
 [ext_resource type="Resource" uid="uid://bnoaodbs2mihp" path="res://location/route_types/greenCroissant_yellowIceCream.tres" id="8_nlmwe"]
 [ext_resource type="Resource" uid="uid://hf3ursqx3fyi" path="res://location/location_types/purple_lilypad.tres" id="8_yxvyb"]
 [ext_resource type="Texture2D" uid="uid://cv567saolfxqb" path="res://level/Game_Background.png" id="9_ekh1f"]
@@ -67,6 +68,7 @@ green_fish_type = ExtResource("4_3hoqp")
 orange_fish_type = ExtResource("5_7r086")
 ray_fish_type = ExtResource("6_s07ac")
 teal_fish_type = ExtResource("7_muybu")
+turtle_fish_type = ExtResource("8_5tgn6")
 route_1 = ExtResource("6_cqabt")
 route_2 = ExtResource("6_6f04q")
 route_3 = ExtResource("7_tyr8x")
