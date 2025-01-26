@@ -6,7 +6,7 @@ var current_bubble : Bubble = null
 var bubbles_available := 3
 var game_over := false
 
-var fish_needed_to_win := 3.0
+var fish_needed_to_win := 15.0
 var fish_delivered := 0.0
 
 var all_coral_alive : Array[Coral]
@@ -36,6 +36,9 @@ var all_routes : Array[Route]
 @export var blue_fish_type : FishType
 @export var brown_fish_type : FishType
 @export var green_fish_type : FishType
+@export var orange_fish_type : FishType
+@export var ray_fish_type : FishType
+@export var teal_fish_type : FishType
 
 @export_category("Routes")
 @export var route_1 : Route
@@ -61,7 +64,7 @@ var all_routes : Array[Route]
 
 
 func _ready() -> void:
-	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type]
+	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type, orange_fish_type, ray_fish_type, teal_fish_type]
 	all_routes = [route_1, route_2, route_3, route_4, route_5, route_6, route_7, route_8, route_9, route_10, route_11, route_12, route_13, route_14, route_15, route_16, route_17, route_18, route_19, route_20]
 		
 	for i in bubbles_available:
@@ -173,7 +176,6 @@ func on_bubble_reached_destination(num_of_fish : int) -> void:
 
 func on_trash_cleared() -> void:
 	trash_on_screen -= 1
-	print(trash_on_screen)
 	if trash_on_screen / 12.0 == 1 or trash_on_screen / 10.0 == 1 or trash_on_screen / 8.0 == 1 or trash_on_screen / 6.0 == 1 or trash_on_screen / 4.0 == 1 or trash_on_screen / 2.0 == 1 or trash_on_screen == 0:
 		if not all_coral_dead.is_empty():
 			var chosen_coral : Coral = all_coral_dead.pick_random()

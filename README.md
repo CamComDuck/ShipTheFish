@@ -21,12 +21,12 @@
      - Ensure all text in your game is large, in a clear sans-serif font, and on plain high contrast backgrounds.
    - Contextual
      - The game uses no more than two buttons, but the buttons perform a wide range of different functions that change based on the player/character's current scenario in the game
-   - #256fes
-     - 3D models can use no more than 256 triangles and a 256x256 texture
    - Herding cats
      - The player controls five or more characters. 
    - Transit Transcendence
      - Design a game that reimagines public transportation as a key to connecting people, stories, and places in innovative and inclusive ways.
+   - Tranquility
+     - Use music and sounds to induce a sense of calmness and relaxation.
 
 
 ## Third-Party Assets

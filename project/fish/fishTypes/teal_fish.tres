@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://cr4eowpob047q"]
+
+[ext_resource type="Script" path="res://fish/fishTypes/fish_types.gd" id="1_dy27i"]
+[ext_resource type="Texture2D" uid="uid://cvkliabuyprvg" path="res://fish/Graphics/Fish_SMALL2_70x45.png" id="1_n4ecp"]
+
+[resource]
+script = ExtResource("1_dy27i")
+name = "Teal Fish"
+is_trash_eater = false
+icon = ExtResource("1_n4ecp")
+speed = 10
