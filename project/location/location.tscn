@@ -31,6 +31,7 @@ anchors_preset = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 75.0
 offset_top = -25.0

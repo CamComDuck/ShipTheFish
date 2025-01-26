@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bilakmd5aaj25"]
+
+[ext_resource type="Script" path="res://bubble/pop_particles.gd" id="1_ga6np"]
+
+[node name="PopParticles" type="CPUParticles2D"]
+z_index = 10
+z_as_relative = false
+emitting = false
+amount = 30
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 145.0
+initial_velocity_max = 175.0
+angle_min = -180.0
+angle_max = 1323.5
+scale_amount_min = 8.0
+scale_amount_max = 12.0
+color = Color(0.780392, 0.811765, 0.909804, 1)
+script = ExtResource("1_ga6np")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

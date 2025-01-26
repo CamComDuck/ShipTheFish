@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cefsmybqdkfxb"]
+
+[ext_resource type="Script" path="res://coral/coral_particles.gd" id="1_u63i1"]
+
+[node name="CoralParticles" type="CPUParticles2D"]
+z_index = 1
+z_as_relative = false
+emitting = false
+amount = 30
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 800.0
+scale_amount_min = 40.0
+scale_amount_max = 60.0
+script = ExtResource("1_u63i1")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

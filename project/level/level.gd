@@ -24,6 +24,9 @@ var normal := Vector2(1.0, 1.0)
 @onready var bubble_icon := preload("res://level/bubble_icon.tscn") as PackedScene
 @onready var fish := preload("res://fish/fish.tscn") as PackedScene
 @onready var trash := preload("res://trash/trash.tscn") as PackedScene
+@onready var bubble_pop_particles := preload("res://bubble/pop_particles.tscn") as PackedScene
+@onready var trash_particles := preload("res://trash/trash_particles.tscn") as PackedScene
+@onready var coral_particles := preload("res://coral/coral_particles.tscn") as PackedScene
 
 @onready var navigation_region := %NavigationRegion as NavigationRegion2D
 @onready var grid_container := %GridContainer as GridContainer
@@ -159,23 +162,43 @@ func on_bubble_spawned(coral_spawned_from : Coral) -> void:
 	new_bubble.connect("bubble_collected", on_bubble_collected)
 	
 
-func on_bubble_sent() -> void:
+func on_bubble_sent(has_fish : bool, bubble_position : Vector2) -> void:
 	GlobalAudio.play_click_sound()
 	bubble_active_location = null
 	current_bubble = null
 	
+	if not has_fish:
+		var new_particles := bubble_pop_particles.instantiate() as CPUParticles2D
+		add_child(new_particles)
+		new_particles.global_position = bubble_position
+		new_particles.emitting = true
+	
 
-func on_bubble_collected() -> void:
+func on_bubble_collected(bubble_position : Vector2) -> void:
+	var new_particles := bubble_pop_particles.instantiate() as CPUParticles2D
+	add_child(new_particles)
+	new_particles.global_position = bubble_position
+	new_particles.emitting = true
+	
 	if bubbles_available < 9 and not game_over:
 		bubbles_available += 1
 		var new_bubble_icon := bubble_icon.instantiate()
 		grid_container.add_child(new_bubble_icon)
+		
+		
 
 
-func on_bubble_reached_destination(num_of_fish : int) -> void:
+
+func on_bubble_reached_destination(num_of_fish : int, bubble_position : Vector2) -> void:
 	fish_delivered += num_of_fish
 	var percent := fish_delivered / fish_needed_to_win
 	win_progress_bar.value = percent
+	
+	var new_particles := bubble_pop_particles.instantiate() as CPUParticles2D
+	add_child(new_particles)
+	new_particles.global_position = bubble_position
+	new_particles.emitting = true
+	
 	if fish_delivered == fish_needed_to_win:
 		# GAME WIN
 		end_screen.show()
@@ -192,7 +215,7 @@ func on_bubble_reached_destination(num_of_fish : int) -> void:
 				child.queue_free()
 
 
-func on_trash_cleared() -> void:
+func on_trash_cleared(trash_position : Vector2) -> void:
 	trash_on_screen -= 1
 	if trash_on_screen / 12.0 == 1 or trash_on_screen / 10.0 == 1 or trash_on_screen / 8.0 == 1 or trash_on_screen / 6.0 == 1 or trash_on_screen / 4.0 == 1 or trash_on_screen / 2.0 == 1 or trash_on_screen == 0:
 		if not all_coral_dead.is_empty():
@@ -205,12 +228,22 @@ func on_trash_cleared() -> void:
 			chosen_coral.revive_timer.start(random_time)
 	if navigation_region.is_baking():
 		await navigation_region.bake_finished
-		
+	
+	var new_particles := trash_particles.instantiate() as CPUParticles2D
+	add_child(new_particles)
+	new_particles.global_position = trash_position
+	new_particles.emitting = true
 	navigation_region.bake_navigation_polygon()
 
 
 func on_coral_revived(coral_revived_from : Coral) -> void:
 	all_coral_alive.append(coral_revived_from)
+	
+	var new_particles := coral_particles.instantiate() as CPUParticles2D
+	add_child(new_particles)
+	new_particles.global_position = coral_revived_from.global_position
+	new_particles.color = Color.PINK
+	new_particles.emitting = true
 	
 
 func _on_fish_spawn_timer_timeout() -> void:
@@ -238,6 +271,14 @@ func _on_trash_spawn_timer_timeout() -> void:
 		chosen_coral.kill_coral()
 		all_coral_dead.append(chosen_coral)
 		all_coral_alive.erase(chosen_coral)
+		
+		var new_particles := coral_particles.instantiate() as CPUParticles2D
+		add_child(new_particles)
+		new_particles.global_position = chosen_coral.global_position
+		new_particles.color = Color.BLACK
+		new_particles.emitting = true
+		
+	navigation_region.bake_navigation_polygon()
 	
 	
 	var min_sec := 3.5
@@ -253,7 +294,7 @@ func _on_trash_spawn_timer_timeout() -> void:
 
 func _on_play_again_button_pressed() -> void:
 	GlobalAudio.play_button_sound()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_packed(preload("res://level/level.tscn"))
 
 
 func _on_main_menu_button_pressed() -> void:

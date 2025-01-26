@@ -2,7 +2,7 @@
 class_name Trash
 extends StaticBody2D
 
-signal trash_cleared
+signal trash_cleared (trash_position : Vector2)
 
 var is_hovered := false
 
@@ -25,7 +25,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if is_hovered:
 		if Input.is_action_just_pressed("click"):
-			trash_cleared.emit()
+			trash_cleared.emit(global_position)
 			GlobalAudio.play_trash_pickup_sound()
 			queue_free()
 

@@ -12,6 +12,7 @@ var is_hovered := false
 @onready var panel_container := %PanelContainer as PanelContainer
 
 func _ready() -> void:
+	location_type.fish_at_location.clear()
 	panel_container.hide()
 	sprite.texture = location_type.map_icon
 	#print("I am a " + location_type.name + " [Location]")

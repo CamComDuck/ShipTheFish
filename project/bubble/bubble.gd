@@ -2,8 +2,8 @@
 class_name Bubble
 extends CharacterBody2D
 
-signal bubble_sent
-signal bubble_reached_destination (num_of_fish : int)
+signal bubble_sent (has_fish : bool, bubble_position : Vector2)
+signal bubble_reached_destination (num_of_fish : int, bubble_position : Vector2)
 
 var fish_inside : Array[Fish] = []
 var max_size := 4
@@ -55,20 +55,20 @@ func _on_button_pressed() -> void:
 			is_moving = true
 			for fish in fish_inside:
 				fish.is_in_moving_bubble = true
-			bubble_sent.emit()
+			bubble_sent.emit(true, global_position)
 			send_button.hide()
 			max_size_label.hide()
 			var tween_spin : Tween = create_tween().set_ease(Tween.EASE_OUT_IN)
 			tween_spin.tween_property(self, "rotation", 20, 20).set_trans(Tween.TRANS_SINE)
 	elif not is_moving and fish_inside.is_empty():
-		bubble_sent.emit()
+		bubble_sent.emit(false, global_position)
 		GlobalAudio.play_bubble_pop_sound()
 		queue_free()
 
 
 func _on_navigation_agent_target_reached() -> void:
 	is_moving = false
-	bubble_reached_destination.emit(fish_inside.size())
+	bubble_reached_destination.emit(fish_inside.size(), global_position)
 	GlobalAudio.play_bubble_pop_sound()
 	queue_free()
 
