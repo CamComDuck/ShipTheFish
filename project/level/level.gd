@@ -6,7 +6,7 @@ var current_bubble : Bubble = null
 var bubbles_available := 3
 var game_over := false
 
-var fish_needed_to_win := 15.0
+var fish_needed_to_win := 1.0
 var fish_delivered := 0.0
 
 var all_coral_alive : Array[Coral]
@@ -16,6 +16,8 @@ var trash_on_screen := 0
 var all_fish_types : Array[FishType]
 var all_routes : Array[Route]
 
+var big := Vector2(1.2, 1.2)
+var normal := Vector2(1.0, 1.0)
 
 @onready var bubble := preload("res://bubble/bubble.tscn") as PackedScene
 @onready var bubble_floating := preload("res://coral/bubble_floating.tscn") as PackedScene
@@ -27,9 +29,14 @@ var all_routes : Array[Route]
 @onready var grid_container := %GridContainer as GridContainer
 @onready var fish_spawn_timer := %FishSpawnTimer as Timer
 @onready var trash_spawn_timer := %TrashSpawnTimer as Timer
-@onready var win_screen := %WinScreen as PanelContainer
-@onready var lose_screen := %LoseScreen as PanelContainer
 @onready var win_progress_bar := %WinProgressBar as TextureProgressBar
+
+@onready var end_screen: Control = %EndScreen
+@onready var win_texture: TextureRect = %WinTexture
+@onready var lose_texture: TextureRect = %LoseTexture
+@onready var main_menu_button: Button = %MainMenuButton
+@onready var play_again_button: Button = %PlayAgainButton
+
 
 
 @export_category("Fish Types")
@@ -64,6 +71,10 @@ var all_routes : Array[Route]
 
 
 func _ready() -> void:
+	end_screen.hide()
+	win_texture.hide()
+	lose_texture.hide()
+	
 	all_fish_types = [blue_fish_type, brown_fish_type, green_fish_type, orange_fish_type, ray_fish_type, teal_fish_type]
 	all_routes = [route_1, route_2, route_3, route_4, route_5, route_6, route_7, route_8, route_9, route_10, route_11, route_12, route_13, route_14, route_15, route_16, route_17, route_18, route_19, route_20]
 		
@@ -91,12 +102,13 @@ func on_location_clicked(location: LocationType) -> void:
 		bubble_active_location = location
 		current_bubble = bubble.instantiate() as Bubble
 		add_child(current_bubble)
-		current_bubble.global_position = Vector2(location.coordinates.x - 100, location.coordinates.y)
+		current_bubble.global_position = Vector2(location.coordinates.x - 150, location.coordinates.y)
 		current_bubble.connect("bubble_sent", on_bubble_sent)
 		current_bubble.connect("bubble_reached_destination", on_bubble_reached_destination)
 	elif bubble_active_location == null and bubbles_available <= 0:
 		# GAME OVER
-		lose_screen.show()
+		end_screen.show()
+		lose_texture.show()
 		fish_spawn_timer.stop()
 		trash_spawn_timer.stop()
 		game_over = true
@@ -161,7 +173,8 @@ func on_bubble_reached_destination(num_of_fish : int) -> void:
 	win_progress_bar.value = percent
 	if fish_delivered == fish_needed_to_win:
 		# GAME WIN
-		win_screen.show()
+		end_screen.show()
+		win_texture.show()
 		fish_spawn_timer.stop()
 		trash_spawn_timer.stop()
 		game_over = true
@@ -231,3 +244,27 @@ func _on_trash_spawn_timer_timeout() -> void:
 		await navigation_region.bake_finished
 		
 	navigation_region.bake_navigation_polygon()
+
+
+func _on_play_again_button_pressed() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://title/title.tscn")
+
+
+func _on_play_again_button_mouse_entered() -> void:
+	play_again_button.scale = big
+
+
+func _on_play_again_button_mouse_exited() -> void:
+	play_again_button.scale = normal
+
+
+func _on_main_menu_button_mouse_entered() -> void:
+	main_menu_button.scale = big
+
+
+func _on_main_menu_button_mouse_exited() -> void:
+	main_menu_button.scale = normal

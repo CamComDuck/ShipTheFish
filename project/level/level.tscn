@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=54 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
 [ext_resource type="Resource" uid="uid://l3vsq1qwf4va" path="res://fish/fishTypes/brown_fish.tres" id="2_5jw6j"]
@@ -47,6 +47,10 @@
 [ext_resource type="Texture2D" uid="uid://c6c4moi4r3mcq" path="res://level/UI_Progress_EMPTY.png" id="43_s5hqw"]
 [ext_resource type="Texture2D" uid="uid://bb84heufhqhct" path="res://level/UI_Bubble_Counter.png" id="43_xk0jt"]
 [ext_resource type="Texture2D" uid="uid://4bi5w801ff07" path="res://level/UI_Progress_FULL.png" id="44_obs4v"]
+[ext_resource type="Texture2D" uid="uid://wpqrigrm1bv2" path="res://title/UI Graphics/Win_Screen.png" id="46_etlsx"]
+[ext_resource type="Texture2D" uid="uid://coxprdulw1hnx" path="res://title/UI Graphics/GameOver_2.png" id="47_7kgjj"]
+[ext_resource type="Texture2D" uid="uid://bbs6hpmlav4fj" path="res://title/UI Graphics/Play_Again.png" id="48_xjqoo"]
+[ext_resource type="Texture2D" uid="uid://c4ilhbw54k37n" path="res://title/UI Graphics/Back_to_MainMenu.png" id="49_muj03"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1868, 6, 1870, 1034, 15, 1039)])
@@ -231,31 +235,49 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="WinScreen" type="PanelContainer" parent="Control"]
+[node name="EndScreen" type="Control" parent="Control"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 0
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control/WinScreen"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "You Win!"
-horizontal_alignment = 1
-
-[node name="LoseScreen" type="PanelContainer" parent="Control"]
+[node name="WinTexture" type="TextureRect" parent="Control/EndScreen"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("46_etlsx")
 
-[node name="Label" type="Label" parent="Control/LoseScreen"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "You Lose!"
-horizontal_alignment = 1
+[node name="LoseTexture" type="TextureRect" parent="Control/EndScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("47_7kgjj")
+
+[node name="PlayAgainButton" type="Button" parent="Control/EndScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 650.0
+offset_top = 659.0
+offset_right = 898.0
+offset_bottom = 730.0
+pivot_offset = Vector2(124, 35)
+focus_mode = 0
+icon = ExtResource("48_xjqoo")
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="Control/EndScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 659.0
+offset_right = 1298.0
+offset_bottom = 730.0
+pivot_offset = Vector2(124, 35)
+focus_mode = 0
+icon = ExtResource("49_muj03")
+flat = true
 
 [node name="WinProgressBar" type="TextureProgressBar" parent="Control"]
 unique_name_in_owner = true
@@ -281,6 +303,12 @@ unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 
+[connection signal="mouse_entered" from="Control/EndScreen/PlayAgainButton" to="." method="_on_play_again_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/EndScreen/PlayAgainButton" to="." method="_on_play_again_button_mouse_exited"]
+[connection signal="pressed" from="Control/EndScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="mouse_entered" from="Control/EndScreen/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/EndScreen/MainMenuButton" to="." method="_on_main_menu_button_mouse_exited"]
+[connection signal="pressed" from="Control/EndScreen/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
 [connection signal="timeout" from="TrashSpawnTimer" to="." method="_on_trash_spawn_timer_timeout"]
 

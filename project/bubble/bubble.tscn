@@ -37,6 +37,7 @@ size_flags_vertical = 3
 
 [node name="MaxSizeLabel" type="Label" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = -53.0
 offset_top = -122.0
