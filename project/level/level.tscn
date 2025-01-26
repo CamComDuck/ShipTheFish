@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://csv6b4fc4tdnl"]
+[gd_scene load_steps=47 format=3 uid="uid://csv6b4fc4tdnl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_xjk5w"]
 [ext_resource type="Resource" uid="uid://l3vsq1qwf4va" path="res://fish/fishTypes/brown_fish.tres" id="2_5jw6j"]
@@ -41,7 +41,9 @@
 [ext_resource type="Resource" uid="uid://3gnbjo7py3q8" path="res://location/route_types/yellowIceCream_pinkLine.tres" id="22_dspcb"]
 [ext_resource type="Resource" uid="uid://bg0yovjtprtyd" path="res://location/route_types/yellowIceCream_purpleLilypad.tres" id="23_hdu4h"]
 [ext_resource type="Resource" uid="uid://b1o3peam04qt7" path="res://location/route_types/yellowIceCream_redIceCream.tres" id="24_yypj1"]
+[ext_resource type="Texture2D" uid="uid://c6c4moi4r3mcq" path="res://level/UI_Progress_EMPTY.png" id="43_s5hqw"]
 [ext_resource type="Texture2D" uid="uid://bb84heufhqhct" path="res://level/UI_Bubble_Counter.png" id="43_xk0jt"]
+[ext_resource type="Texture2D" uid="uid://4bi5w801ff07" path="res://level/UI_Progress_FULL.png" id="44_obs4v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1868, 6, 1870, 1034, 15, 1039)])
@@ -82,7 +84,7 @@ position = Vector2(15, 16)
 navigation_polygon = SubResource("NavigationPolygon_0slok")
 
 [node name="PinkLine" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
-position = Vector2(975, 246)
+position = Vector2(840.94, 320.02)
 location_type = ExtResource("4_ba81c")
 
 [node name="GreenCroissant" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
@@ -90,15 +92,15 @@ position = Vector2(522, 618)
 location_type = ExtResource("3_us6x0")
 
 [node name="PurpleLilypad" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
-position = Vector2(1537, 251)
+position = Vector2(1404.99, 233.655)
 location_type = ExtResource("8_yxvyb")
 
 [node name="RedIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
-position = Vector2(278, 173)
+position = Vector2(220.275, 173)
 location_type = ExtResource("9_v272k")
 
 [node name="YellowIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
-position = Vector2(1336, 593)
+position = Vector2(1212.19, 593)
 location_type = ExtResource("10_tgya4")
 
 [node name="Coral1" parent="NavigationRegion" instance=ExtResource("9_flmfn")]
@@ -248,6 +250,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "You Lose!"
 horizontal_alignment = 1
+
+[node name="WinProgressBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1888.0
+offset_top = 29.0
+offset_right = 3064.0
+offset_bottom = 298.0
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+max_value = 1.0
+step = 0.01
+fill_mode = 1
+texture_under = ExtResource("43_s5hqw")
+texture_progress = ExtResource("44_obs4v")
 
 [node name="FishSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

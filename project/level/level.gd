@@ -6,6 +6,13 @@ var current_bubble : Bubble = null
 var bubbles_available := 3
 var game_over := false
 
+var fish_needed_to_win := 3.0
+var fish_delivered := 0.0
+
+var all_coral_alive : Array[Coral]
+var all_coral_dead : Array[Coral]
+var trash_on_screen := 0
+
 var all_fish_types : Array[FishType]
 var all_routes : Array[Route]
 
@@ -22,6 +29,8 @@ var all_routes : Array[Route]
 @onready var trash_spawn_timer := %TrashSpawnTimer as Timer
 @onready var win_screen := %WinScreen as PanelContainer
 @onready var lose_screen := %LoseScreen as PanelContainer
+@onready var win_progress_bar := %WinProgressBar as TextureProgressBar
+
 
 @export_category("Fish Types")
 @export var blue_fish_type : FishType
@@ -62,6 +71,9 @@ func _ready() -> void:
 	for child in navigation_region.get_children():
 		if child is Coral:
 			child.connect("bubble_spawned", on_bubble_spawned)
+			if not child.is_decoration:
+				child.connect("coral_revived", on_coral_revived)
+				all_coral_alive.append(child)
 		elif child is Location:
 			child.connect("location_clicked", on_location_clicked)
 
@@ -78,10 +90,12 @@ func on_location_clicked(location: LocationType) -> void:
 		add_child(current_bubble)
 		current_bubble.global_position = Vector2(location.coordinates.x - 100, location.coordinates.y)
 		current_bubble.connect("bubble_sent", on_bubble_sent)
+		current_bubble.connect("bubble_reached_destination", on_bubble_reached_destination)
 	elif bubble_active_location == null and bubbles_available <= 0:
 		# GAME OVER
 		lose_screen.show()
 		fish_spawn_timer.stop()
+		trash_spawn_timer.stop()
 		game_over = true
 		for child in navigation_region.get_children():
 			if child is Coral:
@@ -138,8 +152,49 @@ func on_bubble_collected() -> void:
 		grid_container.add_child(new_bubble_icon)
 
 
+func on_bubble_reached_destination(num_of_fish : int) -> void:
+	fish_delivered += num_of_fish
+	var percent := fish_delivered / fish_needed_to_win
+	win_progress_bar.value = percent
+	if fish_delivered == fish_needed_to_win:
+		# GAME WIN
+		win_screen.show()
+		fish_spawn_timer.stop()
+		trash_spawn_timer.stop()
+		game_over = true
+		for child in navigation_region.get_children():
+			if child is Coral:
+				child.bubble_spawn_timer.stop()
+			
+		for child in get_children():
+			if child is Bubble:
+				child.queue_free()
+
+
+func on_trash_cleared() -> void:
+	trash_on_screen -= 1
+	print(trash_on_screen)
+	if trash_on_screen / 12.0 == 1 or trash_on_screen / 10.0 == 1 or trash_on_screen / 8.0 == 1 or trash_on_screen / 6.0 == 1 or trash_on_screen / 4.0 == 1 or trash_on_screen / 2.0 == 1 or trash_on_screen == 0:
+		if not all_coral_dead.is_empty():
+			var chosen_coral : Coral = all_coral_dead.pick_random()
+			all_coral_dead.erase(chosen_coral)
+			
+			var min_sec := 2.0
+			var max_sec := 4.0
+			var random_time := randf_range(min_sec, max_sec)
+			chosen_coral.revive_timer.start(random_time)
+	if navigation_region.is_baking():
+		await navigation_region.bake_finished
+		
+	navigation_region.bake_navigation_polygon()
+
+
+func on_coral_revived(coral_revived_from : Coral) -> void:
+	all_coral_alive.append(coral_revived_from)
+	
+
 func _on_fish_spawn_timer_timeout() -> void:
-	var new_fish = fish.instantiate() as Fish
+	var new_fish := fish.instantiate() as Fish
 	new_fish.load_fish_type(all_fish_types.pick_random())
 	new_fish.load_route(all_routes.pick_random())
 	new_fish.connect("fish_clicked", on_fish_clicked)
@@ -152,12 +207,25 @@ func _on_fish_spawn_timer_timeout() -> void:
 	
 
 func _on_trash_spawn_timer_timeout() -> void:
-	var new_trash = trash.instantiate() as Trash
+	var new_trash := trash.instantiate() as Trash
+	new_trash.connect("trash_cleared", on_trash_cleared)
 	navigation_region.add_child(new_trash)
 	new_trash.global_position = Vector2(randf_range(300, 1800), randf_range(90,715))
-	navigation_region.bake_navigation_polygon()
+	
+	trash_on_screen += 1
+	if trash_on_screen % 2 == 0 and not all_coral_alive.is_empty():
+		var chosen_coral : Coral = all_coral_alive.pick_random()
+		chosen_coral.kill_coral()
+		all_coral_dead.append(chosen_coral)
+		all_coral_alive.erase(chosen_coral)
+	
 	
 	var min_sec := 3.5
 	var max_sec := 5.5
 	var rand_respawn := randf_range(min_sec, max_sec)
 	trash_spawn_timer.start(rand_respawn)
+	
+	if navigation_region.is_baking():
+		await navigation_region.bake_finished
+		
+	navigation_region.bake_navigation_polygon()

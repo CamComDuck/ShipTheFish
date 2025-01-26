@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2yqttymeelj"
-path="res://.godot/imported/coral_alive.png-b988e12c9bcd361eb3318de82ffd1cd2.ctex"
+uid="uid://4bi5w801ff07"
+path="res://.godot/imported/UI_Progress_FULL.png-891812a12fa250b586e731373518c6d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://coral/coral_alive.png"
-dest_files=["res://.godot/imported/coral_alive.png-b988e12c9bcd361eb3318de82ffd1cd2.ctex"]
+source_file="res://level/UI_Progress_FULL.png"
+dest_files=["res://.godot/imported/UI_Progress_FULL.png-891812a12fa250b586e731373518c6d5.ctex"]
 
 [params]
 

@@ -3,6 +3,7 @@ class_name Bubble
 extends CharacterBody2D
 
 signal bubble_sent
+signal bubble_reached_destination (num_of_fish : int)
 
 var fish_inside : Array[Fish] = []
 var max_size := 4
@@ -63,4 +64,5 @@ func _on_button_pressed() -> void:
 
 func _on_navigation_agent_target_reached() -> void:
 	is_moving = false
+	bubble_reached_destination.emit(fish_inside.size())
 	queue_free()

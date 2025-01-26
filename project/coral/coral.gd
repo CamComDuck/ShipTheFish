@@ -3,12 +3,15 @@ class_name Coral
 extends StaticBody2D
 
 signal bubble_spawned (coral_spawned_from : Coral)
+signal coral_revived (coral_revived_from : Coral)
 
 var is_alive := true
 
 @onready var bubble_spawn_timer := %BubbleSpawnTimer as Timer
 @onready var sprite_alive := %SpriteAlive as Sprite2D
 @onready var sprite_dead := %SpriteDead as Sprite2D
+@onready var revive_timer := %ReviveTimer as Timer
+
 @export var is_decoration : bool
 
 
@@ -44,3 +47,8 @@ func restart_timer() -> void:
 func _on_timer_timeout() -> void:
 	bubble_spawned.emit(self)
 	restart_timer()
+
+
+func _on_revive_timer_timeout() -> void:
+	coral_revived.emit(self)
+	revive_coral()

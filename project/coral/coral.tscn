@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnhl0jjfuvhlw"]
 
 [ext_resource type="Script" path="res://coral/coral.gd" id="1_to2df"]
-[ext_resource type="Texture2D" uid="uid://1ylpv5grdwxf" path="res://coral/coral_dead.png" id="1_xmolb"]
 [ext_resource type="Texture2D" uid="uid://bvmxlipwd2v2x" path="res://coral/Graphics/Bubble_Coral_Yellow.png" id="2_6mhgg"]
+[ext_resource type="Texture2D" uid="uid://i1rko6musvle" path="res://coral/Graphics/Bubble_Coral_DEAD.png" id="3_hy7kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdhng"]
 size = Vector2(348, 184)
@@ -21,15 +21,21 @@ texture = ExtResource("2_6mhgg")
 [node name="SpriteDead" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
-texture = ExtResource("1_xmolb")
+texture = ExtResource("3_hy7kt")
 
 [node name="BubbleSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 10.0
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 214.29
+radius = 147.28
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
+[node name="ReviveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
 [connection signal="timeout" from="BubbleSpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ReviveTimer" to="." method="_on_revive_timer_timeout"]

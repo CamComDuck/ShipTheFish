@@ -7,6 +7,9 @@
 size = Vector2(83, 94)
 
 [node name="Trash" type="StaticBody2D"]
+z_index = 15
+z_as_relative = false
+input_pickable = true
 script = ExtResource("1_b8co7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -20,3 +23,6 @@ shape = SubResource("RectangleShape2D_eup1t")
 radius = 81.89
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

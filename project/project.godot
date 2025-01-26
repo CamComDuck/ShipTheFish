@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://bubble/": "yellow",
 "res://coral/": "yellow",
+"res://coral/Graphics/": "red",
 "res://fish/": "yellow",
 "res://fish/Graphics/": "red",
 "res://fish/fishTypes/": "red",
