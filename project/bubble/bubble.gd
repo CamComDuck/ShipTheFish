@@ -20,6 +20,7 @@ var accel := 7
 @onready var max_size_label := %MaxSizeLabel as Label
 @onready var nav := %NavigationAgent as NavigationAgent2D
 @onready var send_button := %SendButton as Button
+@onready var navigation_obstacle := %NavigationObstacle as NavigationObstacle2D
 
 
 func _ready() -> void:
@@ -56,6 +57,7 @@ func _on_button_pressed() -> void:
 			for fish in fish_inside:
 				fish.is_in_moving_bubble = true
 			bubble_sent.emit(true, global_position)
+			navigation_obstacle.queue_free()
 			send_button.hide()
 			max_size_label.hide()
 			var tween_spin : Tween = create_tween().set_ease(Tween.EASE_OUT_IN)

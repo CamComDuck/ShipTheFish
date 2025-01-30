@@ -10,6 +10,7 @@ var is_hovered := false
 @onready var sprite := %Sprite as Sprite2D
 @onready var grid_container := %GridContainerLocation as GridContainer
 @onready var panel_container := %PanelContainer as PanelContainer
+@onready var trash_blocker := preload("res://location/trash_blocker.tscn") as PackedScene
 
 func _ready() -> void:
 	location_type.fish_at_location.clear()
@@ -38,7 +39,8 @@ func _physics_process(_delta: float) -> void:
 
 func on_fish_added(new_fish : Fish) -> void:
 	grid_container.add_child(new_fish)
-	#print("Fish added: " + new_fish.fish_type.name + " [Location]")
+	var new_trash_blocker := trash_blocker.instantiate() as NavigationObstacle2D
+	new_fish.add_child(new_trash_blocker)
 
 
 func on_fish_removed(fish_removed : Fish) -> void:

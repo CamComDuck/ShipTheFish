@@ -4,13 +4,13 @@ extends Node2D
 var big := Vector2(1.2, 1.2)
 var normal := Vector2(1.0, 1.0)
 
-@onready var tutorial: Sprite2D = $Tutorial
-@onready var back_button: Button = $BackButton
-@onready var credits: Sprite2D = $Credits
+@onready var tutorial: Sprite2D = %Tutorial
+@onready var back_button: Button = %BackButton
+@onready var credits: Sprite2D = %Credits
 
-@onready var play_button: Button = $PlayButton
-@onready var tutorial_button: Button = $TutorialButton
-@onready var credits_button: Button = $CreditsButton
+@onready var play_button: Button = %PlayButton
+@onready var tutorial_button: Button = %TutorialButton
+@onready var credits_button: Button = %CreditsButton
 
 
 func _ready() -> void:

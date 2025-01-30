@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxnk4vv1cw51v"]
+
+[node name="TrashBlocker" type="NavigationObstacle2D"]
+position = Vector2(35, 30)
+radius = 80.0
+affect_navigation_mesh = true
+carve_navigation_mesh = true

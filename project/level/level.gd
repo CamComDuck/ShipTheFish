@@ -98,6 +98,7 @@ func _ready() -> void:
 	navigation_region.bake_navigation_polygon()
 	_on_fish_spawn_timer_timeout()
 	
+	
 
 func on_location_clicked(location: LocationType) -> void:
 	if bubble_active_location == null and bubbles_available > 0 and not game_over:
@@ -106,12 +107,19 @@ func on_location_clicked(location: LocationType) -> void:
 		grid_container.get_child(0).queue_free()
 		bubble_active_location = location
 		current_bubble = bubble.instantiate() as Bubble
-		add_child(current_bubble)
+		navigation_region.add_child(current_bubble)
 		current_bubble.global_position = Vector2(location.coordinates.x - 150, location.coordinates.y)
 		current_bubble.connect("bubble_sent", on_bubble_sent)
 		current_bubble.connect("bubble_reached_destination", on_bubble_reached_destination)
+		
+		await create_tween().tween_interval(0.5).finished
+		if navigation_region.is_baking():
+			await navigation_region.bake_finished
+			
+		navigation_region.bake_navigation_polygon()
+		
 	elif bubble_active_location == null and bubbles_available <= 0:
-		# GAME OVER
+		# GAME LOSE
 		GlobalAudio.play_click_sound()
 		end_screen.show()
 		lose_texture.show()
@@ -121,6 +129,7 @@ func on_location_clicked(location: LocationType) -> void:
 		for child in navigation_region.get_children():
 			if child is Coral:
 				child.bubble_spawn_timer.stop()
+				child.revive_timer.stop()
 			
 		for child in get_children():
 			if child is Bubble:
@@ -151,6 +160,12 @@ func on_fish_clicked(fish_clicked : Fish) -> void:
 			current_bubble.remove_fish(fish_clicked)
 			fish_clicked.queue_free()
 			fish_clicked.route.start.add_fish(fish_duplicate)
+	
+	await create_tween().tween_interval(0.5).finished
+	if navigation_region.is_baking():
+		await navigation_region.bake_finished
+		
+	navigation_region.bake_navigation_polygon()
 
 
 func on_bubble_spawned(coral_spawned_from : Coral) -> void:
@@ -172,6 +187,12 @@ func on_bubble_sent(has_fish : bool, bubble_position : Vector2) -> void:
 		add_child(new_particles)
 		new_particles.global_position = bubble_position
 		new_particles.emitting = true
+	else:
+		await create_tween().tween_interval(0.5).finished
+		if navigation_region.is_baking():
+			await navigation_region.bake_finished
+			
+		navigation_region.bake_navigation_polygon()
 	
 
 func on_bubble_collected(bubble_position : Vector2) -> void:
@@ -186,9 +207,6 @@ func on_bubble_collected(bubble_position : Vector2) -> void:
 		grid_container.add_child(new_bubble_icon)
 		
 		
-
-
-
 func on_bubble_reached_destination(num_of_fish : int, bubble_position : Vector2) -> void:
 	fish_delivered += num_of_fish
 	var percent := fish_delivered / fish_needed_to_win
@@ -199,7 +217,7 @@ func on_bubble_reached_destination(num_of_fish : int, bubble_position : Vector2)
 	new_particles.global_position = bubble_position
 	new_particles.emitting = true
 	
-	if fish_delivered == fish_needed_to_win:
+	if fish_delivered >= fish_needed_to_win:
 		# GAME WIN
 		end_screen.show()
 		win_texture.show()
@@ -209,13 +227,14 @@ func on_bubble_reached_destination(num_of_fish : int, bubble_position : Vector2)
 		for child in navigation_region.get_children():
 			if child is Coral:
 				child.bubble_spawn_timer.stop()
+				child.revive_timer.stop()
 			
 		for child in get_children():
 			if child is Bubble:
 				child.queue_free()
 
 
-func on_trash_cleared(trash_position : Vector2) -> void:
+func on_trash_cleared(trash_cleared : Trash) -> void:
 	trash_on_screen -= 1
 	if trash_on_screen / 12.0 == 1 or trash_on_screen / 10.0 == 1 or trash_on_screen / 8.0 == 1 or trash_on_screen / 6.0 == 1 or trash_on_screen / 4.0 == 1 or trash_on_screen / 2.0 == 1 or trash_on_screen == 0:
 		if not all_coral_dead.is_empty():
@@ -226,13 +245,18 @@ func on_trash_cleared(trash_position : Vector2) -> void:
 			var max_sec := 4.0
 			var random_time := randf_range(min_sec, max_sec)
 			chosen_coral.revive_timer.start(random_time)
-	if navigation_region.is_baking():
-		await navigation_region.bake_finished
-	
+			
 	var new_particles := trash_particles.instantiate() as CPUParticles2D
 	add_child(new_particles)
-	new_particles.global_position = trash_position
+	new_particles.global_position = trash_cleared.global_position
 	new_particles.emitting = true
+			
+	trash_cleared.reparent(self)
+	trash_cleared.queue_free()
+	
+	if navigation_region.is_baking():
+		await navigation_region.bake_finished
+		
 	navigation_region.bake_navigation_polygon()
 
 
@@ -258,12 +282,21 @@ func _on_fish_spawn_timer_timeout() -> void:
 	var rand_respawn := randf_range(min_sec, max_sec)
 	fish_spawn_timer.start(rand_respawn)
 	
+	await create_tween().tween_interval(0.5).finished
+	if navigation_region.is_baking():
+		await navigation_region.bake_finished
+		
+	navigation_region.bake_navigation_polygon()
+	
 
 func _on_trash_spawn_timer_timeout() -> void:
 	var new_trash := trash.instantiate() as Trash
 	new_trash.connect("trash_cleared", on_trash_cleared)
 	navigation_region.add_child(new_trash)
-	new_trash.global_position = Vector2(randf_range(300, 1690), randf_range(90,715))
+	
+	var random_position : Vector2 = NavigationServer2D.map_get_random_point(navigation_region.get_navigation_map(), 1, true)
+	#new_trash.global_position = Vector2(randf_range(300, 1690), randf_range(90,715))
+	new_trash.global_position = random_position
 	
 	trash_on_screen += 1
 	if trash_on_screen % 2 == 0 and not all_coral_alive.is_empty():
@@ -277,9 +310,6 @@ func _on_trash_spawn_timer_timeout() -> void:
 		new_particles.global_position = chosen_coral.global_position
 		new_particles.color = Color.BLACK
 		new_particles.emitting = true
-		
-	navigation_region.bake_navigation_polygon()
-	
 	
 	var min_sec := 3.5
 	var max_sec := 5.5
@@ -289,6 +319,7 @@ func _on_trash_spawn_timer_timeout() -> void:
 	if navigation_region.is_baking():
 		await navigation_region.bake_finished
 		
+	
 	navigation_region.bake_navigation_polygon()
 
 

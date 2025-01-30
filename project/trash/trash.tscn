@@ -20,8 +20,9 @@ position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_eup1t")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 81.89
+radius = 50.0
 affect_navigation_mesh = true
+carve_navigation_mesh = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

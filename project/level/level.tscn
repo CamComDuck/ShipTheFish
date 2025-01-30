@@ -54,7 +54,9 @@
 [ext_resource type="Texture2D" uid="uid://c4ilhbw54k37n" path="res://title/UI Graphics/Back_to_MainMenu.png" id="49_muj03"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0slok"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(30, 19, 1868, 6, 1870, 1034, 15, 1039)])
+vertices = PackedVector2Array(1711, 19.9531, 1711.7, 737.953, 1503.69, 233.656, 1490.47, 184.297, 1490.47, 283.008, 1454.34, 319.141, 1697.67, 752, 1624, 752, 1310.89, 593, 1297.67, 543.648, 1404.99, 332.359, 1261.55, 507.508, 1624, 816.656, 1623.82, 816.477, 939.641, 320.023, 1319.51, 283.008, 1355.63, 319.141, 1212.19, 494.297, 1162.84, 507.508, 926.422, 369.383, 607.492, 667.352, 620.703, 618, 1113.49, 593, 1126.71, 642.352, 1023.82, 837.477, 945, 816.367, 69, 767.367, 1.5625, 785.43, 1.96875, 589.727, 225.617, 583.75, 147.82, 788.477, 1545, 795.367, 1466.18, 816.477, 1297.67, 642.352, 1126.71, 543.648, 890.297, 405.5, 394.977, 173, 381.758, 123.648, 1319.51, 184.297, 1306.29, 233.656, 840.938, 221.32, 926.422, 270.656, 1261.55, 678.492, 1423.82, 833.477, 1345, 812.367, 1436.5, 846.156, 1266.18, 833.477, 1212.19, 691.703, 1237.5, 862.156, 1223.82, 848.477, 1145, 827.367, 1162.84, 678.492, 866.18, 837.477, 834, 869.656, 823.82, 859.477, 466.18, 816.477, 436, 846.656, 423.82, 834.477, 472.648, 703.492, 522, 716.703, 1066.18, 848.477, 1050.49, 864.156, 210.789, 222.352, 233.352, 388.219, 2.14063, 359.188, 7.82813, 13.0391, 197.57, 173, 1454.34, 148.172, 607.492, 568.648, 840.938, 418.719, 791.594, 405.5, 755.461, 369.383, 571.352, 532.508, 745, 838.367, 666.672, 859.344, 623.82, 816.477, 571.352, 703.492, 545, 795.367, 184.141, 824.82, 212, 817.367, 345, 813.367, 271.023, 833.18, 436.508, 667.352, 423.297, 618, 436.508, 568.648, 472.648, 532.508, 742.242, 320.023, 522, 519.297, 890.297, 234.539, 1355.63, 148.172, 345.633, 87.5078, 755.461, 270.656, 1404.99, 134.953, 296.273, 74.2969, 381.758, 222.352, 791.594, 234.539, 345.633, 258.492, 296.273, 271.703, 246.922, 258.492, 210.789, 123.648, 246.922, 87.5078)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 4, 1, 6, 7, 8, 9), PackedInt32Array(10, 5, 9, 11), PackedInt32Array(7, 12, 13), PackedInt32Array(14, 15, 16, 11, 17), PackedInt32Array(16, 10, 11), PackedInt32Array(14, 17, 18, 19), PackedInt32Array(20, 21, 22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 26, 29), PackedInt32Array(7, 13, 31, 8), PackedInt32Array(8, 31, 32, 33), PackedInt32Array(19, 18, 34, 35), PackedInt32Array(36, 37, 38, 39, 40), PackedInt32Array(39, 15, 14, 41), PackedInt32Array(42, 33, 32, 43, 44), PackedInt32Array(32, 45, 43), PackedInt32Array(42, 44, 46, 47), PackedInt32Array(46, 48, 49, 47), PackedInt32Array(47, 49, 50, 51), PackedInt32Array(52, 53, 54), PackedInt32Array(55, 56, 57, 58, 59), PackedInt32Array(51, 60, 61, 24, 23), PackedInt32Array(62, 63, 64, 65, 66), PackedInt32Array(0, 3, 67), PackedInt32Array(35, 34, 22, 21, 68, 69), PackedInt32Array(70, 69, 68), PackedInt32Array(71, 70, 68, 72), PackedInt32Array(51, 50, 60), PackedInt32Array(20, 25, 52), PackedInt32Array(20, 52, 54, 73), PackedInt32Array(20, 73, 74, 75, 76), PackedInt32Array(76, 75, 77, 59), PackedInt32Array(59, 77, 55), PackedInt32Array(78, 30, 29, 79), PackedInt32Array(58, 80, 81, 79, 29, 82), PackedInt32Array(58, 57, 80), PackedInt32Array(83, 82, 29), PackedInt32Array(84, 83, 29, 63), PackedInt32Array(85, 84, 63), PackedInt32Array(86, 71, 72, 87, 63), PackedInt32Array(39, 41, 88), PackedInt32Array(89, 38, 37, 90), PackedInt32Array(87, 85, 63), PackedInt32Array(91, 86, 63), PackedInt32Array(0, 67, 92), PackedInt32Array(65, 0, 92, 89, 93), PackedInt32Array(94, 95, 91, 63, 96), PackedInt32Array(39, 88, 40), PackedInt32Array(36, 40, 95, 94), PackedInt32Array(97, 96, 63), PackedInt32Array(98, 97, 63), PackedInt32Array(62, 98, 63), PackedInt32Array(99, 66, 65), PackedInt32Array(100, 99, 65), PackedInt32Array(93, 100, 65), PackedInt32Array(93, 89, 90)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(223, 397, -8, 368, -2, 3, 1721, 10, 1722, 1032, -9, 1046, -8, 580, 216, 574)])
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcdkt"]
 texture = ExtResource("43_xk0jt")
@@ -108,7 +110,7 @@ position = Vector2(1404.99, 233.655)
 location_type = ExtResource("8_yxvyb")
 
 [node name="RedIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
-position = Vector2(220.275, 173)
+position = Vector2(296.275, 173)
 location_type = ExtResource("9_v272k")
 
 [node name="YellowIceCream" parent="NavigationRegion" instance=ExtResource("3_w2b0j")]
@@ -239,6 +241,8 @@ columns = 3
 
 [node name="EndScreen" type="Control" parent="Control"]
 unique_name_in_owner = true
+z_index = 20
+z_as_relative = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -252,6 +256,7 @@ texture = ExtResource("46_etlsx")
 
 [node name="LoseTexture" type="TextureRect" parent="Control/EndScreen"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -260,9 +265,9 @@ texture = ExtResource("47_7kgjj")
 [node name="PlayAgainButton" type="Button" parent="Control/EndScreen"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 650.0
+offset_left = 557.0
 offset_top = 659.0
-offset_right = 898.0
+offset_right = 805.0
 offset_bottom = 730.0
 pivot_offset = Vector2(124, 35)
 focus_mode = 0
@@ -272,9 +277,9 @@ flat = true
 [node name="MainMenuButton" type="Button" parent="Control/EndScreen"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1050.0
+offset_left = 1114.0
 offset_top = 659.0
-offset_right = 1298.0
+offset_right = 1362.0
 offset_bottom = 730.0
 pivot_offset = Vector2(124, 35)
 focus_mode = 0
